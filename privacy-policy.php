@@ -1,41 +1,8 @@
 <?php
-session_start();
-//include database connection file
-require('db.php');
-
-//check user aleready logged in or not 
-if(empty($_SESSION['email'])){
-$msg= '';
-
-//login logic start
-  if (isset($_POST['login'])){
-    // removes backslashes
-$email = stripslashes($_POST['email']);
-    //escapes special characters in a string
-$email = mysqli_real_escape_string($con,$email);
-$password = stripslashes($_POST['password']);
-$password = mysqli_real_escape_string($con,$password);
-//Checking is user existing in the database or not
-    $query = "SELECT * FROM `user` WHERE user_email='$email'
-and user_password='".md5($password)."'";
-$result = mysqli_query($con,$query) or die(mysql_error());
-$count = mysqli_num_rows($result);
-$row = mysqli_fetch_array($result);
-    if($count==1){
- $_SESSION['email'] = $email;
-  $_SESSION['user_id'] = $row['user_id'];
-        // Redirect user to index.php
- header("Location: index.php");
-     }else{
-$msg = '<label class="help-block form-error">Email or password is incorrect</lable>';
-}
-  }
+ session_start();
 
 ?>
-
-<!DOCTYPE html>
 <html>
-	
 <head>
 		<meta charset='utf-8'>
 		<!-- Title -->
@@ -57,23 +24,24 @@ $msg = '<label class="help-block form-error">Email or password is incorrect</lab
 	    <link href='css/template.css' rel='stylesheet'>
 		
 	</head>
+	
 	<body>
-		<!-- Top Header Section -->
+	  		<!-- Top Header Section -->
 		<?php include('header.php') ?>
 		<!-- End Top Header Section -->
 
 		<!-- Slider Section -->
 		<section id="slider">
-        <div class="owl_slider top_slider_wrap">
+			<div class="owl_slider top_slider_wrap">
 				<ul class="owl-carousel top_slider">
 					<li class="style-1" style="background-image: url(images/slides/all-page-slider.png);">
 						<div class="contentwrap">
 							<div class="container">
 								<div class="content">
 									<div class="slideheadingwrap">
-										<!--h2>Login</h2-->
+										<!--h2>Services</h2-->
 									</div>
-								
+									
 								</div>
 							</div>
 						</div>
@@ -82,35 +50,41 @@ $msg = '<label class="help-block form-error">Email or password is incorrect</lab
 			</div>
 		</section>
 		<!-- End Slider Section -->
-        <section id="contacts">
-			<div class="container padd">
+		
+        <section id="about">
+			<div class="container">
 				<div class="section-title">
-					<h2 class="dark-bg">Login</h2>
+					<h2 class="dark-bg">Privacy Policy</h2>
 				</div>
-				<div class="section-body">
-					
-				    <div class="row">
-					    
-					    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sendmessage">
-					    	<!-- Start contact form -->
-					    	<form class="cmxform" action="login.php" method="post">
-					    		
-					    		<input id="femail" placeholder="Enter Email Address" type="email" name="email" data-validation="email">
-					    		<input type="password" name="password" placeholder="Enter Password" >
-                                <a href="forgot-password.php">Forgot Password?</a>
-								<br>
+				<p>J.A.G. Village is committed to providing website users with a website which respects
+their privacy. In particular, the protection of confidential member information is of
+paramount importance to J.A.G. Village. In this context, the Social Work and Social
+Service Work Act, 1998 provides for the confidentiality of information related to the
+administration of the Act.</p>
+				<p>Through this website and Jane App, J.A.G. Village only obtains specific personal
+information from you, such as your name, phone number, address, or e-mail address, if
+you supply such information (by, for example, sending us an e-mail, submitting an
+inquiry, and/or you participate in the “It Takes a Village” service, and/or providing such
+information in a secure portion of the site). Additional information, such as reasons for
+seeking services, will be requested to be provided in an intake form via Jane App,
+however, clients can refuse to provide this information online at any time. J.A.G. Village
+requires all clients to read, review, and acknowledge the consent forms presented in the
+request for intake information through Jane App.</p>
 
-                                <button class="btn btn-secondary" type="submit" name="login">Login</button><br>
-                                <span>Don't have account? <a href="register.php">Create an account</a></span>
-					    	</form>
-					    	<div id="contactemailsendresponse" class="emailsendresponse"><?php echo $msg; ?></div>
-					    	<!-- End Contact form -->
-					    </div>
-				    </div>
+<p>J.A.G. Village will not trade, sell or rent your personal information. J.A.G. Village takes
+precautions — including administrative, technical, and physical measures — to
+safeguard your personal information against loss, theft, and misuse, as well as
+unauthorized access, disclosure, alteration, and destruction. You can help by also
+taking precautions to protect your personal information when you are on the Internet.
+For example, change your passwords often using a combination of letters and numbers.</p>
+
+<p>J.A.G. Village regularly reviews their information-handling practices. If you have any
+questions or comments in this regard, please use contact: info@jagvillage.com.</p>
 				</div>
-			</div>
-		</section>
-		<!-- Footer Section -->
+        </section>
+		
+		
+		
 		<section id="footer" class="dark">
 			<div class="container" >
 					<ul>
@@ -122,13 +96,7 @@ $msg = '<label class="help-block form-error">Email or password is incorrect</lab
 			</div>
 			<a href="#" class="scrollToTop"><i class="fa fa-chevron-up fa-2x" aria-hidden="true"></i></a>
 		</section>
-        <!-- End Footer Section -->
-
-        <!-- Start Donate Modal  -->
 		
-		<!-- End Donate Modal -->
-
-		<!-- Page Preloading -->
 		<div id="preloadpage">
             <div class="loadingwrap">
 				<div class="loading">
@@ -155,13 +123,6 @@ $msg = '<label class="help-block form-error">Email or password is incorrect</lab
 		</script>
 
         <!-- END SCRIPTS -->
+		
 	</body>
-
-
-</html>
-
-<?php
-}else{
-  header('Location: index.php');
-}
-?>
+</html>	

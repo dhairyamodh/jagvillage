@@ -1,0 +1,3 @@
+[13-Aug-2020 20:47:19 UTC] PHP Notice:  Undefined variable: title in /home/khz5f03js6cn/public_html/admin/edit-event.php on line 190
+[13-Aug-2020 20:47:19 UTC] PHP Notice:  Undefined variable: date in /home/khz5f03js6cn/public_html/admin/edit-event.php on line 197
+[13-Aug-2020 20:47:19 UTC] PHP Notice:  Undefined variable: desc in /home/khz5f03js6cn/public_html/admin/edit-event.php on line 204

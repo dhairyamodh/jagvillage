@@ -10,7 +10,7 @@
 	    <title>Volunteer to help - Jag Village</title>
 	    <!-- Meta content -->
 	    <meta content='Project' name='description'>
-	    <meta content='Hope Charity' name='keywords'>
+	    <meta content='Jag Village' name='keywords'>
 	    <meta content='width=device-width, initial-scale=1' name='viewport'>
         <!-- Favicon -->
         <link rel='shortcut icon' href='favicon.png' type='image/png'/>
@@ -72,7 +72,9 @@
 			$row_cate = mysqli_fetch_array($data_cate);
 			$key = $row_cate['service_token'];
 			$date = $row_cate['date'];
-
+			$time = $row_cate['time'];
+			$service = $row_cate['category'];
+			
             $get_data = "select * from services where service_token='$key'";
             $data_run = mysqli_query($con,$get_data);
 
@@ -100,14 +102,15 @@
 
                 
 
-				$volunteer_add = "insert into volunteer(token,date,vol_fname,vol_lname,vol_email,meal,notes,remainder_email) values('$key','$date','$fname1','$lname1','$email1','$meal','$notes','$remainder')";
+				$volunteer_add = "insert into volunteer(token,cate_id,date,vol_fname,vol_lname,vol_email,meal,notes,remainder_email) values('$key','$id','$date','$fname1','$lname1','$email1','$meal','$notes','$remainder')";
 				$run_vol = mysqli_query($con,$volunteer_add);
+				echo $volunteer_add;
                 if($run_vol){
                     
                     require 'phpmailer/PHPMailerAutoload.php';
     $mail = new PHPMailer;
     $mail->Host = 'mail.jagvillage.com';     //Sets the SMTP hosts of your Email hosting, this for Godaddy
-    $mail->Port = 143;                              //Sets the default SMTP server port
+    $mail->Port = 993;                              //Sets the default SMTP server port
     $mail->SMTPAuth = true;                         //Sets SMTP authentication. Utilizes the Username and Password variables
     $mail->SMTPSecure = 'ssl';
     $mail->Username = 'info@jagvillage.com';                  //Sets SMTP username
@@ -371,13 +374,13 @@
 						<tr>
                           <td>
                           <center>
-                          <img src="http://test.jagvillage.com/images/logo.png" /></center>
+                          <img src="http://jagvillage.com/images/logo.png" /></center>
 							<p>Hi '.$fname.' '.$lname.'</p>
+							<h4>Thank you for participating in volunteer.</h4>
 							<h5>
-							What is a jagvillage?<br>When a friend is in need, everyonr asks "What can i do to help?" The answer is always to provide support through a meal, When many friends provide support through meal, This is Jagvillage.
-							<br><br>
-							jagvillage.com us a free meal calendar tool that makes planning among a wide group easy and less stressful.<br><br>
-							Please share this email with othes.
+							What is the J.A.G. Village “It takes a Village” service?<br>When a person is grieving, we often ask them to reach out if they need something, anything at all, however, they rarely do.  When people are in pain instead of asking them to do more, we the Village (friends, colleagues, family) can reach in.  “It takes a Village” @jagvillage.com is an online platform that helps to organize the support required for everyday needs, both tangible and emotional, of those who are grieving.<br><br>
+							<br>Helping Hands can begin healing hearts. Please use this link to sign up for a service that meets the unique needs of your person!  
+							<br>Please share this email with othes.
 							To make changes, read volunteer instructions or view a map, use the following button:</h5>
 							<h5>You can view the Jagvillage Service by clicking the following button.</h5>
 							<table border="0" cellpadding="0" cellspacing="0" class="btn btn-primary">
@@ -387,7 +390,7 @@
 									<table border="0" cellpadding="0" cellspacing="0">
 									  <tbody>
 										<tr>
-										  <td> <a href="http://test.jagvillage.com/change-volunteer.php?key='.$key.'&date='.$date.'" target="_blank">OPen the Jagvillage</a> </td>
+										  <td> <a href="http://jagvillage.com/change-volunteer.php?key='.$key.'&date='.$date.'" target="_blank">OPen the Jagvillage</a> </td>
 										</tr>
 									  </tbody>
 									</table>
@@ -434,7 +437,7 @@
 
 	$mail_rec = new PHPMailer;			
 	$mail_rec->Host = 'mail.jagvillage.com';     //Sets the SMTP hosts of your Email hosting, this for Godaddy
-    $mail_rec->Port = 143;                              //Sets the default SMTP server port
+    $mail_rec->Port = 993;                              //Sets the default SMTP server port
     $mail_rec->SMTPAuth = true;                         //Sets SMTP authentication. Utilizes the Username and Password variables
     $mail_rec->SMTPSecure = 'ssl';
     $mail_rec->Username = 'info@jagvillage.com';                  //Sets SMTP username
@@ -699,9 +702,9 @@
 						<tr>
                           <td>
                           <center>
-                          <img src="http://test.jagvillage.com/images/logo.png" /></center>
+                          <img src="http://jagvillage.com/images/logo.png" /></center>
 							<p>Hi '.$row_data['recipent_name'].'</p>
-							<h5>'.$fname.' '.$lname.'. has signed up to provide service to '.$row_data['recipent_name'].' on '.date('l', strtotime($date)).', '.date('F j Y', strtotime($date)).'.</h5>
+							<h5>'.$fname.' '.$lname.'. has signed up to provide service to '.$row_data['recipent_name'].' on '.date('l', strtotime($date)).', '.date('F j Y', strtotime($date)).' Time is:'.$time.' Service Name is:'.$service.'.</h5> 
 
 							<h5>You can view Jagvillage Service by clicking the following button.</h5>
 							
@@ -712,7 +715,7 @@
 									<table border="0" cellpadding="0" cellspacing="0">
 									  <tbody>
 										<tr>
-                                          <td> <a href="http://test.jagvillage.com/jagvillage-service.php?key='.$key.'" target="_blank">View</a> </td>
+                                          <td> <a href="http://jagvillage.com/jagvillage-service.php?key='.$key.'" target="_blank">View</a> </td>
                                           </tr>
 									  </tbody>
 									</table>
@@ -757,7 +760,7 @@
 	
 	$mail_org = new PHPMailer;
 	$mail_org->Host = 'mail.jagvillage.com';     //Sets the SMTP hosts of your Email hosting, this for Godaddy
-    $mail_org->Port = 143;                              //Sets the default SMTP server port
+    $mail_org->Port = 993;                              //Sets the default SMTP server port
     $mail_org->SMTPAuth = true;                         //Sets SMTP authentication. Utilizes the Username and Password variables
     $mail_org->SMTPSecure = 'ssl';
     $mail_org->Username = 'info@jagvillage.com';                  //Sets SMTP username
@@ -1022,9 +1025,9 @@
 						<tr>
 						  <td>
 						  <center>
-                          <img src="http://test.jagvillage.com/images/logo.png" /></center>
+                          <img src="http://jagvillage.com/images/logo.png" /></center>
 						  <p>Hi '.$row_data['recipent_name'].'</p>
-						  <h5>'.$fname.' '.$lname.'. has signed up to provide service to '.$row_data['recipent_name'].' on '.date('l', strtotime($date)).', '.date('F j Y', strtotime($date)).'.</h5>
+						  <h5>'.$fname.' '.$lname.'. has signed up to provide service to '.$row_data['recipent_name'].' on '.date('l', strtotime($date)).', '.date('F j Y', strtotime($date)).' Time is:'.$time.' Service Name is:'.$service.'.</h5>
 
 						  <h5>You can view Jagvillage Service by clicking the following button.</h5>
 
@@ -1035,7 +1038,7 @@
 									<table border="0" cellpadding="0" cellspacing="0">
 									  <tbody>
 										<tr>
-										  <td> <a href="http://test.jagvillage.com/jagvillage-service.php?key='.$key.'" target="_blank">View</a> </td>
+										  <td> <a href="http://jagvillage.com/jagvillage-service.php?key='.$key.'" target="_blank">View</a> </td>
 										</tr>
 									  </tbody>
 									</table>
@@ -1147,7 +1150,7 @@
                                 <option value="logged"><?php echo $fname.' '.$lname ?></option>
                                 </select> -->
                                 <label for="meal">Jagvillage Service</label>
-					    		<input id="meal" type="text" name="meal" value="<?php echo $row_time['category']; ?>">
+					    		<input id="meal" type="text" name="meal" value="<?php echo $row_time['category']; ?>" readonly>
                                 <label for="notes">Notes</label>
 					    		<input id="notes" type="text" name="notes" placeholder="Optional">
                                 <label>Reminder Email</label><br>
@@ -1181,10 +1184,10 @@
 		<!-- Footer Section -->
 		<section id="footer" class="dark" >
 			<div class="container" >
-				<ul>
-					<li><a href="#" align="center">&#64; 2020 Jag Village</a></li>
-					<li><a href="#" align="center"> Privacy Policy</a></li>
-					<li><a href="#" align="center">Terms of Use</a></li>
+					<ul>
+					<li><a href="develop-by.php" align="center">Copyright 2020 &#64; Design & Develop By Jag Village</a></li>
+					<li><a href="privacy-policy.php" align="center"> Privacy Policy</a></li>
+					<li><a href="terms-of-use.php" align="center">Terms of Use</a></li>
 				</ul>
 				
 			</div>

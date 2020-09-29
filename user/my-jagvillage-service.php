@@ -223,20 +223,28 @@ if(!empty($_SESSION['email'])){
                                      <?php
                                        $check = "select * from volunteer where vol_email = '$email'";
                                        $check_run = mysqli_query($con,$check);
+                                       
                                        $sql = "select * from services where user_id='$id'";
                                         $run = mysqli_query($con,$sql);
                                         $org_rec_count = mysqli_num_rows($run);
+                                        
+                                        $rec_sql = "select * from services where recipent_email='$email'";
+                                        $run_sql = mysqli_query($con,$rec_sql);
+                                        $rec_count = mysqli_num_rows($run_sql);
+                                        
                                        $vol_count = mysqli_num_rows($check_run);
-                                       if($vol_count > 0 && $org_rec_count > 0){
+                                       
+                                       if($vol_count > 0 && $org_rec_count > 0 && $rec_count > 0){
+                                           
                                           while($check_row = mysqli_fetch_array($check_run)){
                                              $token = $check_row['token'];
                                              $sql = "select * from services where service_token='$token'";
-                                             $run = mysqli_query($con,$sql);
-                                             if(mysqli_num_rows($run) > 0){
-                                             $row=mysqli_fetch_array($run);
+                                             $run1 = mysqli_query($con,$sql);
+                                             if(mysqli_num_rows($run1) > 0){
+                                             $row1=mysqli_fetch_array($run);
                                              ?>
                                              <tr>
-                                       <td><?php echo $row['recipent_name']; ?></td>
+                                       <td><?php echo $row1['recipent_name']; ?></td>
                                        <td><a class="btn btn-primary" href="../jagvillage-service.php?key=<?php echo $token; ?>">Open Jagvillage Service</a></td>
                                        </tr>
                                              <?php
@@ -253,22 +261,35 @@ if(!empty($_SESSION['email'])){
                                     </tr>
                                     <?php
                                         }
-                                       }else if($vol_count > 0){
+                                        while($row_rec=mysqli_fetch_array($run_sql)){ 
+                                            $link=$row_rec["service_token"];
+                                            ?>
+                                            <tr>
+                                       <td><?php echo $row_rec['recipent_name']; ?></td>
+                                       <td><a class="btn btn-primary" href="../jagvillage-service.php?key=<?php echo $link; ?>">Open Jagvillage Service</a></td>
+                                       
+                                    </tr>
+                                    <?php }
+                                    
+                                       }else {
+                                           if($vol_count > 0){
+                                           
                                           while($check_row = mysqli_fetch_array($check_run)){
                                              $token = $check_row['token'];
-                                             $sql = "select * from services where service_token='$token'";
-                                             $run = mysqli_query($con,$sql);
-                                             if(mysqli_num_rows($run) > 0){
-                                             $row=mysqli_fetch_array($run);
+                                             $sql_vol = "select * from services where service_token='$token'";
+                                             $run_vol = mysqli_query($con,$sql_vol);
+                                             if(mysqli_num_rows($run_vol) > 0){
+                                             $row_vol=mysqli_fetch_array($run_vol);
                                              ?>
                                              <tr>
-                                       <td><?php echo $row['recipent_name']; ?></td>
+                                       <td><?php echo $row_vol['recipent_name']; ?></td>
                                        <td><a class="btn btn-primary" href="../jagvillage-service.php?key=<?php echo $token; ?>">Open Jagvillage Service</a></td>
                                        </tr>
                                              <?php
                                           }
                                        }
-                                       }else if($org_rec_count > 0){
+                                       }if($org_rec_count > 0){
+                                           
                                           while($row=mysqli_fetch_array($run)){ 
                                              $link=$row["service_token"];
                                              ?>
@@ -279,6 +300,20 @@ if(!empty($_SESSION['email'])){
                                      </tr>
                                      <?php
                                          }
+                                       }
+                                       if($rec_count > 0){
+                                           
+                                          while($row_rec=mysqli_fetch_array($run_sql)){ 
+                                             $link=$row_rec["service_token"];
+                                             ?>
+                                             <tr>
+                                        <td><?php echo $row_rec['recipent_name']; ?></td>
+                                        <td><a class="btn btn-primary" href="../jagvillage-service.php?key=<?php echo $link; ?>">Open Jagvillage Service</a></td>
+                                        
+                                     </tr>
+                                     <?php
+                                         }
+                                       }
                                        }
                                         
                                             ?>

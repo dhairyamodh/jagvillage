@@ -11,7 +11,7 @@
 	    <title>Jag Village</title>
 	    <!-- Meta content -->
 	    <meta content='Project' name='description'>
-	    <meta content='Hope Charity' name='keywords'>
+	    <meta content='Jag Village' name='keywords'>
 	    <meta content='width=device-width, initial-scale=1' name='viewport'>
         <!-- Favicon -->
         <link rel='shortcut icon' href='favicon.png' type='image/png'/>
@@ -61,7 +61,7 @@
 				</div>
 				<div class="row">
 					<div class="col-lg-6">
-						<p style="font-weight:600; font-size: 15px; text-align:justify;">J.A.G. Village is committed to supporting individuals and families who are anticipating or have experienced the loss of a loved one.  A range of psychosocial supports is available to the bereaved as they learn to walk, breathe and even smile again, while often tolerating the intolerable.
+						<p style="font-weight:600; font-size: 15px; text-align:justify;">Losing a “loved” one is tough.  It can feel even tougher if our relationship was super close, or super complicated, if our person left suddenly, or if we saw our person in pain.  It can be even tougher if we feel alone, unheard, or misunderstood.  Here at J.A.G. Village we are committed to supporting individuals and families who are anticipating or have experienced the loss of a loved one.  A range of psychosocial supports is available to the bereaved as they learn to walk, breathe and even smile again, while often tolerating the intolerable.
                             </p>
                             <p style="font-weight:600; font-size: 15px; text-align:justify;">J.A.G. Village offers </p>
 							<ul class="another-ul">
@@ -126,7 +126,7 @@
 					<div class="col-lg-12">                         
                             <h5 class="h4"><b>&nbsp;&nbsp;&nbsp;&nbsp;INSURANCE</b></h5>
                             <ul class="ul">
-                                <li>Counselling by a Registered Social Worker is NOT covered by the Ontario Health Insurance Plan (OHIP).  However, extended health care benefits through your employers often does. 
+                                <li>Counselling by a Registered Social Worker is <b>NOT</b> covered by the Ontario Health Insurance Plan (OHIP).  However, <b>extended health care benefits</b> through your employers <b>often does.</b> 
                                     </li>
                                 <li>Contact your insurance provider to find out if clinical services by a Registered Social Worker is covered. It may also be advantageous to ask what percentage of the fee your plan covers, what the maximum coverage is per year, and how you get reimbursed.</li>
                                 <li>Official receipts are emailed after every session and can also be used as a medical expense tax write off.</li>
@@ -142,7 +142,7 @@
 			<div class="container">
 			<div class="col-md-12">
 			<div class="section-title">
-					<h2 class="dark-bg">Family Program</h2>
+					<h2 class="dark-bg">Family Programs</h2>
 				</div>
 				<div class="row">
 				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" >
@@ -151,19 +151,18 @@
 								<img src="images/service-family-program.png" style="border:1px solid #159397; border-radius: 25px; object-fit: cover;"/>						
 							
 					</div>   
-					<div class="col-lg-6" style="margin-bottom:20px;">
-                        <p style="font-weight:600; font-size: 15px;  text-align:justify;"><b>Caregiver Support</b></p>
-                        <p style="font-weight:600; font-size: 15px;  text-align: justify;">At times it may be valuable for caregivers to meet with us individually.  It is not uncommon to seek information about age appropriate grief education, ways on how to support a child/youth at home, as well as guidance on engaging with schools/coaches and community members to help raise their awareness and sensitivity to your child’s grief needs.  These sessions can be scheduled in addition to or in place of counselling sessions. </p>
-					</div>
-					<br><br>
+					
+                    <p style="font-weight:600; font-size: 15px;  text-align:justify;"><b>Caregiver Support</b></p>
+                    <p style="font-weight:600; font-size: 15px;  text-align: justify;">At times it may be valuable for caregivers to meet with us individually.  It is not uncommon to seek information about age appropriate grief education, ways on how to support a child/youth at home, as well as guidance on engaging with schools/coaches and community members to help raise their awareness and sensitivity to your child’s grief needs.  These sessions can be scheduled in addition to or in place of counselling sessions.</p>
+				
+					
 
 					<p style="font-weight:600; font-size: 15px;  text-align:justify;"><b>Family Counselling</b></p>
 					<p style="font-weight:600; font-size: 15px;  text-align: justify;">The death of a relative or close loved one affects the balance of our family systems.   Each one of us uniquely reacts, processes, and copes with this loss in their own way.  Our goal is for families to share, listen, learn, and heal in ways that honour our own unique grief, while also being respectful of those they love.</p> 
 
 <p style="font-weight:600; font-size: 15px;  text-align:justify;"><b>Family Activities</b></p>
-<p style="font-weight:600; font-size: 15px;  text-align:justify;">We believe in the value of collective healing.  Being with other children and families who “get it” is healing in itself.  Activities will be based around recreation and/or other creative activities that allow families to have fun while both honouring their loved ones and coexisting with grief and/or painful feelings.  Please stay tuned for upcoming events.</p>
-				<hr><b>Through the generous donations of friends, family and the community, J.A.G. Village, is pleased to share that this program is subsidized, and will be provided at little to no cost to the participants. </b>
-				<hr>
+<p style="font-weight:600; font-size: 15px;  text-align:justify;">We believe in the value of collective healing.  Being with other children and families who “get it” is healing in itself.  Activities will be based around recreation and/or other creative activities that allow families to have fun while both honouring their loved ones and coexisting with grief and/or painful feelings.  Please stay tuned for upcoming events. <b>Through the generous donations of friends, family and the community, J.A.G. Village, is pleased to share that this program is subsidized, and will be provided at little to no cost to the participants.</b></p>
+				
 				</div>
 			</div>
 				
@@ -177,16 +176,11 @@
 				</div>
 				<div class="row">
 				    <div class="col-lg-6" style="margin-bottom:20px;">
-                        <p style="font-weight:600; font-size: 15px;  text-align:justify;">	<b>The Village Youth R.O.A.D.E.</b><br>The Youth <b>R.O.A.D.E.</b> is a youth engagement program built on KLC (Kindness,
-                                        Love and Compassion). Children and youth will plan and schedule monthly
-                                        activities for fellow bereaved peers. These activities may include: recreation, art,
-                                        celebrations, board games and etc. The purpose of this program is to provide a
-                                        safe space for bereaved children to be a part of a village who understand and
-                                        honour each other’s unique grief.<br>
-                                        This program, the Village <b>ROADE</b> is named after its founding members <b>R</b>hys, <b>O</b>wen L
-and <b>O</b>wen N., <b>A</b>lly, <b>D</b>avis and <b>E</b>than.<br>The <b>KLC</b> values originate from founding members <b>K</b>yla, <b>L</b>ana, <b>C</b>helsea<br>These trailblazers have all experienced the death of loved ones and through these
-losses have come together to support their peers and shift current views of grief and
-loss.</p>
+                        <p style="font-weight:600; font-size: 15px;  text-align:justify;">	<b>The Village Youth R.O.A.D.E.</b><br>The Youth <b>R.O.A.D.E.</b> is a youth engagement program built on <b>KLC</b> (Kindness, Love and Compassion). Bereaved children and youth will plan and schedule monthly activities for fellow bereaved peers.  These activities may include: recreation, art, celebrations, board games etc.  The purpose of this program is to provide a safe space for bereaved children to be a part of a village who understand and honour each other's unique grief.<br>
+                                        This program, the Village <b>ROADE</b> is named after its founding members <b>R</b>hys, <b>O</b>wen L and <b>O</b>wen N., <b>A</b>lly, <b>D</b>avis and <b>E</b>than.  The <b>KLC</b> values are also named from founding members <b>K</b>yla, <b>L</b>ana, and <b>C</b>helsea. These trailblazers have all experienced the death of loved ones and through these losses have come together to support their peers and shift current views of grief and loss.
+                                        <br>
+                                        <strong>Through the generous donations of friends, family and the community, J.A.G. Village, is pleased to share that this program is subsidized, and will be provided at little to no cost to the participants.</strong>
+                                        </p>
 					</div>
 
 					
@@ -198,9 +192,7 @@ loss.</p>
 					</div>	
 								
 				</div>
-						<hr>
-<b>Through the generous donations of friends, family and the community, J.A.G. Village, is pleased to share that this program is subsidized, and will be provided at little to no cost to the participants.</b>
-<hr>
+					
 			</div>
         </section>
 		
@@ -218,9 +210,9 @@ loss.</p>
 							
 					</div>   
 					<div class="col-lg-6" style="margin-bottom:20px;">
-                        <p style="font-weight:600; font-size: 15px;  text-align:justify;">At J.A.G. Village we are dedicated to nurturing, educating and creating healthy grieving communities where grief is honoured and supported.</p>
-                        <p style="font-weight:600; font-size: 15px;  text-align: justify;">We offer keynote speaking, educational seminars and workshops designed to help families, professionals, volunteers, and community members learn about supporting grieving children and youth.</p>
-					    <p style="font-weight:600; font-size: 15px;  text-align: justify;">Please contact us if you have any questions regarding these services, as all education and training can be customized to meet your needs.</p>
+                        <p style="font-weight:600; font-size: 15px;  text-align:justify;">Do you have or know a family member, a friend, a student or a colleague who is grieving?  Do you wish you knew what to say or how to act or be with them in helpful ways? You are not alone. We live in a culture where topics such as loss, death and dying are taboo.  These subjects often make us feel uncomfortable.  We often avoid that which is uncomfortable, but here at J.A.G. Village we are dedicated to nurturing, educating and creating healthy grieving communities where grief is honoured and supported.</p>
+                        <p style="font-weight:600; font-size: 15px;  text-align: justify;">We offer educational seminars and workshops designed to help families, professionals, volunteers, and community members learn about supporting grieving children and youth. Please contact us if you have any questions regarding these services, as all education and training can be customized to meet your needs.</p>
+					    
 					</div>
 					
 				</div>
@@ -288,7 +280,7 @@ loss.</p>
 					<h2 class="dark-bg">It Takes a Village</h2>
 				</div>
 				<div align="center">
-				    <img src="images/coming-soon.png">
+				    <img src="images/It-takes-a-Village-service-page.png">
 				</div>
 			<!-- <div class="row">
 					<div class="col-lg-12">
@@ -318,10 +310,10 @@ loss.</p>
 		<!-- Footer Section -->
 		<section id="footer" class="dark">
 			<div class="container" >
-				<ul>
-					<li><a href="#" align="center">&#64; 2020 Jag Village</a></li>
-					<li><a href="#" align="center"> Privacy Policy</a></li>
-					<li><a href="#" align="center">Terms of Use</a></li>
+					<ul>
+					<li><a href="develop-by.php" align="center">Copyright 2020 &#64; Design & Develop By Jag Village</a></li>
+					<li><a href="privacy-policy.php" align="center"> Privacy Policy</a></li>
+					<li><a href="terms-of-use.php" align="center">Terms of Use</a></li>
 				</ul>
 				
 			</div>

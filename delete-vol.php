@@ -5,7 +5,14 @@ if(isset($_POST['cancel'])){
     $key = $_POST['token'];
     $date = $_POST['date'];
     $note = $_POST['note'];
-    $delete = "delete from volunteer where token='$key' and date='$date'";
+    $id = $_POST['cate_id'];
+    $delete = "delete from volunteer where token='$key' and date='$date' and cate_id='$id'";
+    
+    $get_cate = "select * from category_date where cate_id='$id'";
+			$data_cate = mysqli_query($con,$get_cate);
+			$row_cate = mysqli_fetch_array($data_cate);
+			$time = $row_cate['time'];
+			$service = $row_cate['category'];
 
     $get_vol = "select * from volunteer where token='$key' and date='$date'";
     $vol_run = mysqli_query($con,$get_vol);
@@ -14,6 +21,7 @@ if(isset($_POST['cancel'])){
 	$vemail = $row_vol['vol_email'];
     $fname = $row_vol['vol_fname'];
     $lname = $row_vol['vol_lname'];
+   
 
     $run = mysqli_query($con,$delete);
 
@@ -25,20 +33,21 @@ if(isset($_POST['cancel'])){
 			$org_id = $row_data['user_id'];
 			$remail = $row_data['recipent_email'];
 			$rname = $row_data['recipent_name'];
-
+            
 			$get_org = "select * from user where user_id='$org_id'";
 			$run_org = mysqli_query($con,$get_org);
             $row_org = mysqli_fetch_array($run_org);
             
             $oemail = $row_org['user_email'];
-
+            
+           
     if($run){
 
 		require 'phpmailer/PHPMailerAutoload.php';
 		
 		$mail_vol = new PHPMailer;
     $mail_vol->Host = 'mail.jagvillage.com';     //Sets the SMTP hosts of your Email hosting, this for Godaddy
-    $mail_vol->Port = 143;                              //Sets the default SMTP server port
+    $mail_vol->Port = 993;                              //Sets the default SMTP server port
     $mail_vol->SMTPAuth = true;                         //Sets SMTP authentication. Utilizes the Username and Password variables
     $mail_vol->SMTPSecure = 'ssl';
     $mail_vol->Username = 'info@jagvillage.com';                  //Sets SMTP username
@@ -303,11 +312,11 @@ if(isset($_POST['cancel'])){
 						<tr>
 						  <td>
 						  <center>
-                          <img src="http://test.jagvillage.com/images/logo.png" /></center>
+                          <img src="http://jagvillage.com/images/logo.png" /></center>
 							
 							<h5>Hi '.$fname.' '.$lname.'</h5>
                             <p>We wanted to let you know that '.$fname.' '.$lname.' has cancelled the help planned for the following date(s): </p>
-                            <p><b>Date:</b> '.date('l, F j, Y', strtotime($date)).'</p>
+                            <p><b>Date:</b> '.date('l, F j, Y', strtotime($date)).' Time is:'.$time.' Service Name is:'.$service.'</p> 
                             <p>You can view the Jagvillage Service by clicking the following button.</p>
 							<table border="0" cellpadding="0" cellspacing="0" class="btn btn-primary">
 							  <tbody>
@@ -316,7 +325,7 @@ if(isset($_POST['cancel'])){
 									<table border="0" cellpadding="0" cellspacing="0">
 									  <tbody>
 										<tr>
-										  <td> <a href="http://test.jagvillage.com/jagvillage-service.php?key='.$key.'" target="_blank">Verify My Jagvillage Service</a> </td>
+										  <td> <a href="http://jagvillage.com/jagvillage-service.php?key='.$key.'" target="_blank">Verify My Jagvillage Service</a> </td>
 										</tr>
 									  </tbody>
 									</table>
@@ -360,7 +369,7 @@ if(isset($_POST['cancel'])){
 
     $mail_rec = new PHPMailer;
     $mail_rec->Host = 'mail.jagvillage.com';     //Sets the SMTP hosts of your Email hosting, this for Godaddy
-    $mail_rec->Port = 143;                              //Sets the default SMTP server port
+    $mail_rec->Port = 993;                              //Sets the default SMTP server port
     $mail_rec->SMTPAuth = true;                         //Sets SMTP authentication. Utilizes the Username and Password variables
     $mail_rec->SMTPSecure = 'ssl';
     $mail_rec->Username = 'info@jagvillage.com';                  //Sets SMTP username
@@ -625,11 +634,11 @@ if(isset($_POST['cancel'])){
 						<tr>
 						  <td>
 						  <center>
-                          <img src="http://test.jagvillage.com/images/logo.png" /></center>
+                          <img src="http://jagvillage.com/images/logo.png" /></center>
 							
 							<h5>Hi '.$rname.'</h5>
                             <p>We wanted to let you know that '.$fname.' '.$lname.' has cancelled the help planned for the following date(s): </p>
-                            <p><b>Date:</b> '.date('l, F j, Y', strtotime($date)).'</p>
+                            <p><b>Date:</b> '.date('l, F j, Y', strtotime($date)).' Time is:'.$time.' Service Name is:'.$service.'</p>
                             <p>You can view the Jagvillage Service by clicking the following button.</p>
 							<table border="0" cellpadding="0" cellspacing="0" class="btn btn-primary">
 							  <tbody>
@@ -638,7 +647,7 @@ if(isset($_POST['cancel'])){
 									<table border="0" cellpadding="0" cellspacing="0">
 									  <tbody>
 										<tr>
-										  <td> <a href="http://test.jagvillage.com/jagvillage-service.php?key='.$key.'" target="_blank">Verify My Jagvillage Service</a> </td>
+										  <td> <a href="http://jagvillage.com/jagvillage-service.php?key='.$key.'" target="_blank">Verify My Jagvillage Service</a> </td>
 										</tr>
 									  </tbody>
 									</table>
@@ -681,7 +690,7 @@ if(isset($_POST['cancel'])){
 
 	$mail_org = new PHPMailer;
 	$mail_org->Host = 'mail.jagvillage.com';     //Sets the SMTP hosts of your Email hosting, this for Godaddy
-    $mail_org->Port = 143;                              //Sets the default SMTP server port
+    $mail_org->Port = 993;                              //Sets the default SMTP server port
     $mail_org->SMTPAuth = true;                         //Sets SMTP authentication. Utilizes the Username and Password variables
     $mail_org->SMTPSecure = 'ssl';
     $mail_org->Username = 'info@jagvillage.com';                  //Sets SMTP username
@@ -946,10 +955,10 @@ if(isset($_POST['cancel'])){
 						<tr>
 						  <td>
 						  <center>
-                          <img src="http://test.jagvillage.com/images/logo.png" /></center>
+                          <img src="http://jagvillage.com/images/logo.png" /></center>
                           <h5>Hi '.$rname.'</h5>
                           <p>We wanted to let you know that '.$fname.' '.$lname.' has cancelled the help planned for the following date(s): </p>
-                          <p><b>Date:</b> '.date('l, F j, Y', strtotime($date)).'</p>
+                          <p><b>Date:</b> '.date('l, F j, Y', strtotime($date)).' Time is:'.$time.' Service Name is:'.$service.'</p>
                           <p>You can view the Jagvillage Service by clicking the following button.</p>
 		  
 						  </td>
@@ -959,7 +968,7 @@ if(isset($_POST['cancel'])){
 									<table border="0" cellpadding="0" cellspacing="0">
 									  <tbody>
 										<tr>
-										  <td> <a href="http://test.jagvillage.com/jagvillage-service.php?key='.$key.'" target="_blank">Verify My Jagvillage Service</a> </td>
+										  <td> <a href="http://jagvillage.com/jagvillage-service.php?key='.$key.'" target="_blank">Verify My Jagvillage Service</a> </td>
 										</tr>
 									  </tbody>
 									</table>
@@ -998,7 +1007,8 @@ if(isset($_POST['cancel'])){
 	$mail_org->Send(); 
         echo '<script>alert("Booking Cancelled Successfully!");
         window.open("jagvillage-service.php?key='.$key.'","_self");
-        </script>';
+		</script>';
+		
     }else{
         echo '<script>alert("Booking not cancelled!");</script>';
     }

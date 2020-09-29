@@ -55,7 +55,7 @@
 	    <title>Jag Village</title>
 	    <!-- Meta content -->
 	    <meta content='Project' name='description'>
-	    <meta content='Hope Charity' name='keywords'>
+	    <meta content='Jag Village' name='keywords'>
 	    <meta content='width=device-width, initial-scale=1' name='viewport'>
         <!-- Favicon -->
         <link rel='shortcut icon' href='favicon.png' type='image/png'/>
@@ -103,15 +103,16 @@
 				<div class="section-body">
 					<div class="col-lg-3 col-md-3 col-sm-5 col-xs-10 centered contact-details">
 						<div class="social-icons">
-							<a href="http://www.facebook.com/" target="_blank"><i class="fa fa-facebook-square fa-3x" aria-hidden="true"></i></a>
-					        <a href="http://www.twitter.com/" target="_blank"><i class="fa fa-twitter-square fa-3x" aria-hidden="true"></i></a>
-					        <a href="http://www.linkedin.com/" target="_blank"><i class="fa fa-linkedin-square fa-3x" aria-hidden="true"></i></a>
+							<a href="https://www.facebook.com/jagvillage/" target="_blank"><i class="fa fa-facebook-square fa-3x" aria-hidden="true"></i></a>
+					        <a href="https://www.instagram.com/j.a.g.village/" target="_blank"><i class="fa fa-instagram fa-3x" aria-hidden="true"></i></a>
+					        
 					        <a href="mailto:info@jagvillage.com" target="_blank"><i class="fa fa-envelope fa-3x" aria-hidden="true"></i></a>
 				        </div>
 				        <div class="contacts">
 							
 							<span class="details">7054 Lettner Rd, Bowmanville, ON L1C 3K2</span>
 							<hr>
+							<span class="details">Tel: +1 833 JAG VILL</span> <br>
 							<span class="details">Tel: +1 833 524 8455</span>
 							<hr>
 							<span class="details">Email: info@jagvillage.com</span>
@@ -160,9 +161,9 @@
 		<section id="footer" class="dark">
 			<div class="container" >
 				<ul>
-					<li><a href="#" align="center">&#64; 2020 Jag Village</a></li>
-					<li><a href="#" align="center"> Privacy Policy</a></li>
-					<li><a href="#" align="center">Terms of Use</a></li>
+					<li><a href="develop-by.php" align="center">Copyright 2020 &#64; Design & Develop By Jag Village</a></li>
+					<li><a href="privacy-policy.php" align="center"> Privacy Policy</a></li>
+					<li><a href="terms-of-use.php" align="center">Terms of Use</a></li>
 				</ul>
 				
 			</div>

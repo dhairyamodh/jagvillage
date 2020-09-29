@@ -18,10 +18,10 @@ require('db.php');
             $row_data = mysqli_fetch_array($data_run);
         }
          ?>
-	    <title>Meal for <?php echo $row_data['recipent_name'];?> - Jag Village</title>
+	    <title>Jagvillage Service for <?php echo $row_data['recipent_name'];?> - Jag Village</title>
 	    <!-- Meta content -->
 	    <meta content='Project' name='description'>
-	    <meta content='Hope Charity' name='keywords'>
+	    <meta content='Jag Village' name='keywords'>
 	    <meta content='width=device-width, initial-scale=1' name='viewport'>
         <!-- Favicon -->
         <link rel='shortcut icon' href='favicon.png' type='image/png'/>
@@ -77,7 +77,7 @@ require('db.php');
 		</div>
 		<div class="form-group">
 			<label for="need">Message</label>
-			<textarea class="form-control" name="" id="msg" cols="30" rows="10" placeholder="Enter message"><?php echo $fname.' '.$lname; ?> has invited you to join Jagvillage Service for <?php echo $row['recipent_name'] ?>&#13;&#10;&#10;What is a jagvillage?&#13;&#10;When a friend is in need, everyonr asks "What can i do to help?" The answer is always to provide support through a meal, When many friends provide support through meal, This is Jagvillage.&#13;&#10;&#10;jagvillage.com us a free meal calendar tool that makes planning among a wide group easy and less stressful.&#13;&#10;&#10;Please share this email with othes.</textarea>
+			<textarea class="form-control" name="" id="msg" cols="30" rows="10" placeholder="Enter message"><?php echo $fname.' '.$lname; ?>  invited you to join the J.A.G. Village “It takes a Village Service” for <?php echo $row['recipent_name'] ?>&#13;&#10;&#10;What is the J.A.G. Village "It takes a Village” service?&#13;&#10;&#10;When a person is grieving, we often ask them to reach out if they need something, anything at all, however, they rarely do.  When people are in pain instead of asking them to do more, we the Village (friends, colleagues, family) can reach in.  “It takes a Village” @jagvillage.com is an online platform that helps to organize the support required for everyday needs, both tangible and emotional, of those who are grieving.&#13;&#10;&#10;Helping Hands can begin healing hearts. Please use this link to sign up for a service that meets the unique needs of your person! &#13;&#10;&#10; Please share this email with other friends who may want to help.</textarea>
 		</div>
 		<div class="form-group">
 			<label>CC</label><br>
@@ -143,6 +143,7 @@ require('db.php');
       </div>
       <input type="hidden" name="token" value="<?php echo $_GET['key']; ?>">
       <input type="hidden" name="date" id="date" value="<?php echo $_GET['date']; ?>">
+      <input type="hidden" name="cate_id" id="cate_id" >
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         <button type="submit" class="btn btn-danger" name="cancel">Cancel Services</button>
@@ -201,10 +202,10 @@ require('db.php');
                     <strong>Recipient</strong>
                     <div style="color: #159397"><?php echo $row_data['recipent_name'];?></div>
                     <hr>
-                    <input type="text" class="form-control" value="http://test.jagvillage.com/jagvillage-service.php?key=<?php echo $_GET['key']; ?>" style="width: 100%; margin-bottom: 10px;">
+                    <input type="text" class="form-control" value="http://jagvillage.com/jagvillage-service.php?key=<?php echo $_GET['key']; ?>" style="width: 100%; margin-bottom: 10px;">
                         <button class="btn btn-light btn-block email" target="_blank"><i class="fa fa-envelope" aria-hidden="true"></i> Invitations</button>
-                        <a href="https://www.facebook.com/sharer/sharer.php?u=http://test.jagvillage.com/jagvillage-service.php?key=<?php echo $_GET['key']; ?>&t=TITLE" class="btn btn-info btn-block" target="_blank"><i class="fa fa-facebook-square" aria-hidden="true"></i> Share</a>
-                        <a href="https://api.whatsapp.com/send?phone=+1(647)671-4966&text=http://test.jagvillage.com/jagvillage-service.php?key=<?php echo $_GET['key']; ?>" class="btn btn-success btn-block" target="_blank"><i class="fa fa-whatsapp" aria-hidden="true"></i> Share</a>
+                        <a href="https://www.facebook.com/sharer/sharer.php?u=http://jagvillage.com/jagvillage-service.php?key=<?php echo $_GET['key']; ?>&t=TITLE" class="btn btn-info btn-block" target="_blank"><i class="fa fa-facebook-square" aria-hidden="true"></i> Share</a>
+                        <a href="https://api.whatsapp.com/send?phone=+1(647)671-4966&text=http://jagvillage.com/jagvillage-service.php?key=<?php echo $_GET['key']; ?>" class="btn btn-success btn-block" target="_blank"><i class="fa fa-whatsapp" aria-hidden="true"></i> Share</a>
                         </div>
                     
                     </div>
@@ -243,6 +244,7 @@ require('db.php');
                     $run_cate = mysqli_query($con,$get_cate);
                     while($row_cate = mysqli_fetch_array($run_cate)){
                             $date = $row_cate['date'];
+                            $id = $row_cate['cate_id'];
                     ?>
         <div class="row"><div class="col-sm-3 col-xs-4 text-center"><h6><?php echo date('F j Y', strtotime($row_cate['date'])); ?></h6><?php echo date('l', strtotime($row_cate['date'])); ?>, <?php echo $row_cate['time'] ?></div>
         <div class="col-sm-2 col-xs-8">
@@ -250,18 +252,23 @@ require('db.php');
         </div>
         <div class="col-sm-3 col-xs-8">
         <?php 
-        $check = "select * from volunteer where token='$key' and date='$date'";
-        $c_run = mysqli_query($con,$check);
-        $c_row = mysqli_fetch_array($c_run);
-
         $r_email = "select * from services where service_token='$key'";
+        
         $r_run = mysqli_query($con,$r_email);
         $r_row = mysqli_fetch_array($r_run);
+        
+        $check = "select * from volunteer where cate_id='$id'";
+        $c_run = mysqli_query($con,$check);
+        if(mysqli_num_rows($c_run)){
+        while($c_row = mysqli_fetch_array($c_run)){
+           
+
+        
 
         if($r_row['recipent_email'] == $email){ ?>
         
-        <span class="visible-xs-inline"></span></div><div class="col-sm-4 col-sm-offset-0 col-xs-offset-4 col-xs-8"><a class="btn btn-primary btn-block cancel_meal" date="<?php echo $row_cate['date']; ?>">Cancel Service</a></div></div>
-        <?php }elseif(!empty($c_row['vol_email']) && $c_row['vol_email'] == $email) {  ?>
+        <span class="visible-xs-inline"></span></div><div class="col-sm-4 col-sm-offset-0 col-xs-offset-4 col-xs-8"><a class="btn btn-primary btn-block cancel_meal" cate_id="<?php echo $row_cate['date']; ?>" date="<?php echo $row_cate['date']; ?>">Cancel Service</a></div></div>
+        <?php }elseif(!empty($c_row['vol_email']) && $c_row['vol_email'] == $email && $c_row['cate_id'] == $row_cate['cate_id']) { ?>
         
         <strong class="text-danger">Already been volunteered</strong>
         <span class="visible-xs-inline"></span></div><div class="col-sm-4 col-sm-offset-0 col-xs-offset-4 col-xs-8"><a class="btn btn-secondary btn-block" href="change-volunteer.php?id=<?php echo $row_cate['cate_id']; ?>">Make Changes</a></div></div>
@@ -270,8 +277,18 @@ require('db.php');
         <strong>This date is available</strong>
         <span class="visible-xs-inline"></span></div><div class="col-sm-4 col-sm-offset-0 col-xs-offset-4 col-xs-8"><a class="btn btn-primary btn-block" href="volunteer.php?id=<?php echo $row_cate['cate_id']; ?>">Volunteer for this</a></div></div>
         </a>
-        <?php } ?>
-                        <?php } ?>
+        <?php } }?>
+                        <?php }else {
+                        if($r_row['recipent_email'] == $email){ ?> 
+                        <span class="visible-xs-inline"></span></div><div class="col-sm-4 col-sm-offset-0 col-xs-offset-4 col-xs-8"><a class="btn btn-primary btn-block cancel_meal" cate_id="<?php echo $row_cate['cate_id']; ?>" date="<?php echo $row_cate['date']; ?>">Cancel Service</a></div></div>
+                        <?php
+                        }else{
+                        ?>
+                            <a class="text-success" href="volunteer.php?id=<?php echo $row_cate['cate_id']; ?>">
+        <strong>This date is available</strong>
+        <span class="visible-xs-inline"></span></div><div class="col-sm-4 col-sm-offset-0 col-xs-offset-4 col-xs-8"><a class="btn btn-primary btn-block" href="volunteer.php?id=<?php echo $row_cate['cate_id']; ?>">Volunteer for this</a></div></div>
+        </a>
+                       <?php } } } ?>
     </div>
 					</div>
 					</div>
@@ -292,9 +309,9 @@ require('db.php');
 		<section id="footer" class="dark" >
 			<div class="container" >
 				<ul>
-					<li><a href="#" align="center">&#64; 2020 Jag Village</a></li>
-					<li><a href="#" align="center"> Privacy Policy</a></li>
-					<li><a href="#" align="center">Terms of Use</a></li>
+					<li><a href="develop-by.php" align="center">Copyright 2020 &#64; Design & Develop By Jag Village</a></li>
+					<li><a href="privacy-policy.php" align="center"> Privacy Policy</a></li>
+					<li><a href="terms-of-use.php" align="center">Terms of Use</a></li>
 				</ul>
 				
 			</div>
@@ -341,7 +358,9 @@ $(document).ready(function(){
 
 $('.cancel_meal').click(function(){
     var date = $(this).attr('date');
+    var cate_id = $(this).attr('cate_id');
     $('#date').val(date);
+     $('#cate_id').val(cate_id);
 	$('.cancel').modal('show');
 })
 

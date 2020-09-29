@@ -65,7 +65,7 @@ $_SESSION['user_id'] = $row['user_id'];
 	    <title>Jag Village</title>
 	    <!-- Meta content -->
 	    <meta content='Project' name='description'>
-	    <meta content='Hope Charity' name='keywords'>
+	    <meta content='Jag Village' name='keywords'>
 	    <meta content='width=device-width, initial-scale=1' name='viewport'>
         <!-- Favicon -->
         <link rel='shortcut icon' href='favicon.png' type='image/png'/>
@@ -146,7 +146,6 @@ $_SESSION['user_id'] = $row['user_id'];
                                         <li class=""><span class="eight-character"><i class="fa fa-close" aria-hidden="true"></i></span>&nbsp; Atleast 8 Character</li>
                                     </ul>
                                 <input type="password" name="cpass" placeholder="Enter Confirm Password" >
-								
 					    		<button class="btn btn-secondary" type="submit" name="register">Register</button>
 					    	</form>
 					    	<div id="contactemailsendresponse" class="emailsendresponse"><?php echo $msg; ?></div>
@@ -159,10 +158,10 @@ $_SESSION['user_id'] = $row['user_id'];
 		<!-- Footer Section -->
 		<section id="footer" class="dark">
 			<div class="container" >
-				<ul>
-					<li><a href="#" align="center">&#64; 2020 Jag Village</a></li>
-					<li><a href="#" align="center"> Privacy Policy</a></li>
-					<li><a href="#" align="center">Terms of Use</a></li>
+					<ul>
+					<li><a href="develop-by.php" align="center">Copyright 2020 &#64; Design & Develop By Jag Village</a></li>
+					<li><a href="privacy-policy.php" align="center"> Privacy Policy</a></li>
+					<li><a href="terms-of-use.php" align="center">Terms of Use</a></li>
 				</ul>
 				
 			</div>
@@ -202,7 +201,8 @@ $_SESSION['user_id'] = $row['user_id'];
 
         <!-- END SCRIPTS -->
 	</body>
-  <script>
+
+<script>
   (function($) {
   $.fn.inputFilter = function(inputFilter) {
     return this.on("input keydown keyup mousedown mouseup select contextmenu drop", function() {
@@ -329,7 +329,6 @@ $(".intTextBox").inputFilter(function(value) {
         }
   });
   </script>
-
 </html>
 
 <?php

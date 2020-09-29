@@ -6,7 +6,6 @@ jQuery(window).on('load', function () {
 });
 
 $(document).ready(function(){
-
     //Various Sliders options and configurations
     //More Options -> https://owlcarousel2.github.io/OwlCarousel2/docs/api-options.html
     // Slider Section BX Slider Settings

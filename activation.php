@@ -12,7 +12,7 @@ session_start();
 	    <title>It takes village - Jag Village</title>
 	    <!-- Meta content -->
 	    <meta content='Project' name='description'>
-	    <meta content='Hope Charity' name='keywords'>
+	    <meta content='Jag village' name='keywords'>
 	    <meta content='width=device-width, initial-scale=1' name='viewport'>
         <!-- Favicon -->
         <link rel='shortcut icon' href='favicon.png' type='image/png'/>
@@ -67,7 +67,7 @@ session_start();
 		</div>
 		<div class="form-group">
 			<label for="need">Message</label>
-			<textarea class="form-control" name="" id="msg" cols="30" rows="10" placeholder="Enter message"><?php echo $fname.' '.$lname; ?> has invited you to join Jagvillage Service for <?php echo $row['recipent_name'] ?>&#13;&#10;&#10;What is a jagvillage?&#13;&#10;When a friend is in need, everyonr asks "What can i do to help?" The answer is always to provide support through a meal, When many friends provide support through meal, This is Jagvillage.&#13;&#10;&#10;jagvillage.com us a free meal calendar tool that makes planning among a wide group easy and less stressful.&#13;&#10;&#10;Please share this email with othes.</textarea>
+			<textarea class="form-control" name="" id="msg" cols="30" rows="10" placeholder="Enter message"><?php echo $fname.' '.$lname; ?>  invited you to join the J.A.G. Village “It takes a Village Service” for <?php echo $row['recipent_name'] ?>&#13;&#10;&#10;What is the J.A.G. Village "It takes a Village” service?&#13;&#10;&#10;When a person is grieving, we often ask them to reach out if they need something, anything at all, however, they rarely do.  When people are in pain instead of asking them to do more, we the Village (friends, colleagues, family) can reach in.  “It takes a Village” @jagvillage.com is an online platform that helps to organize the support required for everyday needs, both tangible and emotional, of those who are grieving.&#13;&#10;&#10;Helping Hands can begin healing hearts. Please use this link to sign up for a service that meets the unique needs of your person! &#13;&#10;&#10; Please share this email with other friends who may want to help.</textarea>
 		</div>
 		<div class="form-group">
 			<label>CC</label><br>
@@ -112,7 +112,7 @@ session_start();
 					<div class="card-body text-center">
                         <h6>Here is the unique link for your Jagvillage Service</h6>
                             
-                        <input type="text" value="http://test.jagvillage.com/jagvillage-service.php?key=<?php echo $_GET['key']; ?>" style="width: 50%" id="link">
+                        <input type="text" value="http://jagvillage.com/jagvillage-service.php?key=<?php echo $_GET['key']; ?>" style="width: 50%" id="link">
                         <button class="btn" onclick="myFunction()">Copy link</button>
                         <div id="msg_link" class="text-success text-center"></div>
                         <ul style="margin-top: 20px;">
@@ -121,12 +121,12 @@ session_start();
                         </ul>
                         <h4>NEXT STEP: Invite Others</h4>
                         <button  class="btn btn-light email" target="_blank"><i class="fa fa-envelope" aria-hidden="true"></i> Email Invitations</button>
-                        <a href="https://www.facebook.com/sharer/sharer.php?u=http://test.jagvillage.com/jagvillage-service.php?key=<?php echo $_GET['key']; ?>&t=TITLE"
+                        <a href="https://www.facebook.com/sharer/sharer.php?u=http://jagvillage.com/jagvillage-service.php?key=<?php echo $_GET['key']; ?>&t=TITLE"
    class="btn btn-info" target="_blank"><i class="fa fa-facebook-square" aria-hidden="true"></i> Share on facebook</a>
-                        <a href="https://api.whatsapp.com/send?phone=+1(647)671-4966&text=http://test.jagvillage.com/jagvillage-service.php?key=<?php echo $_GET['key']; ?>" class="btn btn-success" target="_blank"><i class="fa fa-whatsapp" aria-hidden="true"></i> Share on whatsapp</a>
+                        <a href="https://api.whatsapp.com/send?phone=+1(647)671-4966&text=http://jagvillage.com/jagvillage-service.php?key=<?php echo $_GET['key']; ?>" class="btn btn-success" target="_blank"><i class="fa fa-whatsapp" aria-hidden="true"></i> Share on whatsapp</a>
                         <br>
                         <br>
-                        <button onclick='window.location.href="http://test.jagvillage.com/jagvillage-service.php?key=<?php echo $_GET['key']; ?>"'class="btn btn-light" target="_blank"><i class="fa fa-external-link" aria-hidden="true"></i> View My Jagvillage Service</button>
+                        <button onclick='window.location.href="http://jagvillage.com/jagvillage-service.php?key=<?php echo $_GET['key']; ?>"'class="btn btn-light" target="_blank"><i class="fa fa-external-link" aria-hidden="true"></i> View My Jagvillage Service</button>
 					</div>
 					</div>
 					
@@ -146,10 +146,11 @@ session_start();
 		<section id="footer" class="dark" >
 			<div class="container" >
 				<ul>
-					<li><a href="#" align="center">&#64; 2020 Jag Village</a></li>
-					<li><a href="#" align="center"> Privacy Policy</a></li>
-					<li><a href="#" align="center">Terms of Use</a></li>
+					<li><a href="develop-by.php" align="center">Copyright 2020 &#64; Design & Develop By Jag Village</a></li>
+					<li><a href="privacy-policy.php" align="center"> Privacy Policy</a></li>
+					<li><a href="terms-of-use.php" align="center">Terms of Use</a></li>
 				</ul>
+					
 				
 			</div>
 			<a href="#" class="scrollToTop"><i class="fa fa-chevron-up fa-2x" aria-hidden="true"></i></a>

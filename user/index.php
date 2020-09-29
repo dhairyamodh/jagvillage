@@ -154,6 +154,7 @@ if(!empty($_SESSION['email'])){
                                     <div class="profile-text">
                                        <h6><?php 
                                        if(!empty($_SESSION['email'])){ echo $fname.' '.$lname; }
+                                      
                                        ?></h6>
                                        
                                     </div>

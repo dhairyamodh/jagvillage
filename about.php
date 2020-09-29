@@ -36,7 +36,7 @@
 		<section id="slider">
 			<div class="owl_slider top_slider_wrap">
 				<ul class="owl-carousel top_slider">
-					<li class="style-1" style="background-image: url(images/slides/slider_3.png);">
+					<li class="style-1" style="background-image: url(images/slides/all-page-slider.png);">
 						<div class="contentwrap">
 							<div class="container">
 								<div class="content">
@@ -120,7 +120,7 @@
 				</div>			
 					<div class="col-lg-6">
 					<br><br>
-						<p style="text-align:justify; font-weight: 600;"><font color="white">J.A.G. Village is dedicated to providing support, a sense of community and empowering children, youth and their families who are anticipating or have experienced the loss of a loved one through counselling, grief education and collective healing activities.</font></p>
+						<p style="text-align:justify; font-weight: 600;"><font color="white">J.A.G. Village is a social enterprise that is dedicated to providing support, a sense of community and empowering children, youth, and their families who are anticipating or have experienced the loss of a loved one through counselling, grief education and collective healing activities.</font></p>
 					</div>
 					
 				
@@ -137,12 +137,13 @@
 					<h2 class="dark-bg">Our Vision</h2>
 				</div>
 				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-							<p style="text-align:justify; color:#fff;">To promote and create a culture both internally and externally of J.A.G. Village where individuals, families and communities recognize that grief is not a problem to be solved, it is love that needs to be honoured.</p>
+							<p style="text-align:justify; color:#fff;">To promote and create a culture both internally and externally of J.A.G. Village where individuals, families and communities recognize that grief is not a problem to be solved, it is love that needs to be nurtured, carried and honoured, even when that love and/or grief is complicated.</p>
+							<h4><font color="white">Values</font></h4>
 							<p style="text-align:justify; font-weight: 900;"><font color="white">Kindness</font></p>
-						<p style="text-align:justify; font-weight: 600;"><font color="white">Kindness is described as the act of doing no harm to others. Here at J.A.G. Village we ask that this kindness be extended to ourselves. We acknowledge that all feelings and thoughts are important.  We observe, and feel them with kindness.</font></p>
+						<p style="text-align:justify; font-weight: 600;"><font color="white">Kindness is described as the act of doing no harm to others. Here at J.A.G. Village, we ask that this kindness be extended to ourselves. We acknowledge that all feelings and thoughts are important.  We observe, and feel them with kindness.</font></p>
 		                 
 		                 <p style="text-align:justify; font-weight: 900;"><font color="white">Love</font></p>
-						<p style="text-align:justify; font-weight: 600;"><font color="white">We know that your love for a loved one has brought you here. Grief is love.  Love can look and feel like so many other feelings, including sadness, anger, worry, guilt, relief, numbness, and even happiness.  </font></p>
+						<p style="text-align:justify; font-weight: 600;"><font color="white">We know that your love for a loved one has brought you here. Grief is love.  Love can look and feel like so many other feelings, including sadness, anger, worry, guilt, relief, numbness, and even happiness.</font></p>
 		                 
 		                
 		                 
@@ -154,13 +155,15 @@
 					
 				
 				</div>
-					
+				<div class="container">
+					<div class="col-lg-1 col-md-1 col-sm-1 col-xs-12">
+					    </div>
 					<br></br>
-					<div class="col-lg-11 col-md-11 col-sm-11 col-xs-12">
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 					 <p style="text-align:justify; font-weight: 900;"><font color="white">Compassion & Connected Community</font></p>
 						<p style="text-align:justify; font-weight: 600;"><font color="white">Compassion allows us to tolerate the intolerable, and for others to bear witness to pain that cannot be fixed.  At J.A.G. Village we ask that we suspend judgement on what, how, and who we think we or others should or could be.  Through a connected community, we find strength and the ability to coexist with the life we had and the life we have now been given.</font></p>
 		              </div>   
-					
+					</div>
 				</div>
 				
 				</div>	
@@ -205,9 +208,9 @@
 		<section id="footer" class="dark">
 			<div class="container" >
 				<ul>
-					<li><a href="#" align="center">&#64; 2020 Jag Village</a></li>
-					<li><a href="#" align="center"> Privacy Policy</a></li>
-					<li><a href="#" align="center">Terms of Use</a></li>
+					<li><a href="develop-by.php" align="center">Copyright 2020 &#64; Design & Develop By Jag Village</a></li>
+					<li><a href="privacy-policy.php" align="center"> Privacy Policy</a></li>
+					<li><a href="terms-of-use.php" align="center">Terms of Use</a></li>
 				</ul>
 				
 			</div>

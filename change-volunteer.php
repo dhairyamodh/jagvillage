@@ -10,7 +10,7 @@
 	    <title>Volunteer to help - Jag Village</title>
 	    <!-- Meta content -->
 	    <meta content='Project' name='description'>
-	    <meta content='Hope Charity' name='keywords'>
+	    <meta content='Jag Village' name='keywords'>
 	    <meta content='width=device-width, initial-scale=1' name='viewport'>
         <!-- Favicon -->
         <link rel='shortcut icon' href='favicon.png' type='image/png'/>
@@ -60,34 +60,7 @@
   <!-- /.modal-dialog -->
 </div>
 
-<div class="modal fade cancel" id="event-modal" tabindex="-1" role="dialog" id="addcalendar" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <h4 class="modal-title">Confirm</h4>
-      </div>
-      <div class="modal-body">
-        <form action="delete-vol.php" method="post">
-        <div class="form-group">
-        <p><b>The scheduled participant will be cancelled. this item will become available for others to book.</b></p>
-        <h6 id="date"></h6>
-			<label for="need">The reciepent will be notified of the cancellation. To include personal message, enter it below.</label>
-            <textarea name="note" class="form-control" id="" cols="30" rows="10"></textarea>
-	    </div>
-      </div>
-      <input type="hidden" name="token" value="<?php echo $_GET['key']; ?>">
-      <input type="hidden" name="date" value="<?php echo $_GET['date']; ?>">
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-danger" name="cancel">Cancel Booking</button>
-        </form>
-      </div>
-    </div>
-    <!-- /.modal-content -->
-  </div>
-  <!-- /.modal-dialog -->
-</div>
+
 		<!-- Top Header Section -->
         <?php 
         if(!empty($_SESSION['email'])){
@@ -101,6 +74,8 @@
 			$row_cate = mysqli_fetch_array($data_cate);
 			$key = $row_cate['service_token'];
 			$date = $row_cate['date'];
+			$time = $row_cate['time'];
+			$service = $row_cate['category'];
 			
             $get_data = "select * from services where service_token='$key'";
             $data_run = mysqli_query($con,$get_data);
@@ -126,14 +101,14 @@
                 $rec_email = $row_data['recipent_email'];
                 $org_email = $row_org['user_email'] ;
                 
-                $volunteer_add = "update volunteer set meal='$meal', notes='$notes', remainder_email='$remainder' where date='$date' and token='$key'";
+                $volunteer_add = "update volunteer set meal='$meal', notes='$notes', remainder_email='$remainder' where date='$date' and token='$key' and cate_id='$id'";
                 $run_change = mysqli_query($con,$volunteer_add);
                 if($run_change){
                     
                     require 'phpmailer/PHPMailerAutoload.php';
     $mail = new PHPMailer;
     $mail->Host = 'mail.jagvillage.com';     //Sets the SMTP hosts of your Email hosting, this for Godaddy
-    $mail->Port = 143;                              //Sets the default SMTP server port
+    $mail->Port = 993;                              //Sets the default SMTP server port
     $mail->SMTPAuth = true;                         //Sets SMTP authentication. Utilizes the Username and Password variables
     $mail->SMTPSecure = 'ssl';
     $mail->Username = 'info@jagvillage.com';                  //Sets SMTP username
@@ -397,14 +372,14 @@
 						<tr>
                           <td>
                           <center>
-                          <img src="http://test.jagvillage.com/images/logo.png" /></center>
+                          <img src="http://jagvillage.com/images/logo.png" /></center>
 							<p>Hi '.$fname.' '.$lname.'</p>
 							<h5>
 							You made changes in jagvillage services 
 							<br>
-							New date and time is '.date('l', strtotime($date)).', '.date('F j Y', strtotime($date)).'
+							New date is '.date('l', strtotime($date)).', '.date('F j Y', strtotime($date)).' Time is:'.$time.' Service name is:'.$service.'.
 							<br><br>
-							jagvillage.com us a free meal calendar tool that makes planning among a wide group easy and less stressful.<br><br>
+							jagvillage.com is an online platform that helps to organize the support required for everyday needs, both tangible and emotional, of those who are grieving.<br><br>
 							Please share this email with othes.
 							To make changes, read volunteer instructions or view a map, use the following button:</h5>
 							<h5>You can view the Jagvillage Service by clicking the following button.</h5>
@@ -415,7 +390,7 @@
 									<table border="0" cellpadding="0" cellspacing="0">
 									  <tbody>
 										<tr>
-										  <td> <a href="http://test.jagvillage.com/change-volunteer.php?key='.$key.'&date='.$date.'" target="_blank">OPen the Jagvillage</a> </td>
+										  <td> <a href="http://jagvillage.com/jagvillage-service.php?key='.$key.'&date='.$date.'" target="_blank">Open the Jagvillage</a> </td>
 										</tr>
 									  </tbody>
 									</table>
@@ -461,7 +436,7 @@
 	
 	$mail_rec = new PHPMailer;
 	$mail_rec->Host = 'mail.jagvillage.com';     //Sets the SMTP hosts of your Email hosting, this for Godaddy
-    $mail_rec->Port = 143;                              //Sets the default SMTP server port
+    $mail_rec->Port = 993;                              //Sets the default SMTP server port
     $mail_rec->SMTPAuth = true;                         //Sets SMTP authentication. Utilizes the Username and Password variables
     $mail_rec->SMTPSecure = 'ssl';
     $mail_rec->Username = 'info@jagvillage.com';                  //Sets SMTP username
@@ -726,9 +701,9 @@
 						<tr>
                           <td>
                           <center>
-                          <img src="http://test.jagvillage.com/images/logo.png" /></center>
+                          <img src="http://jagvillage.com/images/logo.png" /></center>
 							<p>Hi '.$rec_email.'</p>
-							<h5>'.$fname.' '.$lname.'. made changes to jagvillage services '.$row_data['recipent_name'].' on '.date('l', strtotime($date)).', '.date('F j Y', strtotime($date)).'.</h5>
+							<h5>'.$fname.' '.$lname.'. made changes to jagvillage services '.$row_data['recipent_name'].' on '.date('l', strtotime($date)).', '.date('F j Y', strtotime($date)).' Time is:'.$time.' Service name is:'.$service.'.</h5>
 
 							<h5>You can view Jagvillage Service by clicking the following button.</h5>
 							
@@ -739,7 +714,7 @@
 									<table border="0" cellpadding="0" cellspacing="0">
 									  <tbody>
 										<tr>
-                                          <td> <a href="http://test.jagvillage.com/jagvillage-service.php?key='.$key.'" target="_blank">View</a> </td>
+                                          <td> <a href="http://jagvillage.com/jagvillage-service.php?key='.$key.'" target="_blank">View</a> </td>
                                           </tr>
 									  </tbody>
 									</table>
@@ -784,7 +759,7 @@
 	
 	$mail_org = new PHPMailer;
 	$mail_org->Host = 'mail.jagvillage.com';     //Sets the SMTP hosts of your Email hosting, this for Godaddy
-    $mail_org->Port = 143;                              //Sets the default SMTP server port
+    $mail_org->Port = 993;                              //Sets the default SMTP server port
     $mail_org->SMTPAuth = true;                         //Sets SMTP authentication. Utilizes the Username and Password variables
     $mail_org->SMTPSecure = 'ssl';
     $mail_org->Username = 'info@jagvillage.com';                  //Sets SMTP username
@@ -1049,9 +1024,9 @@
 						<tr>
 						  <td>
 						  <center>
-                          <img src="http://test.jagvillage.com/images/logo.png" /></center>
+                          <img src="http://jagvillage.com/images/logo.png" /></center>
 						  <p>Hi '.$org_email.'</p>
-						  <h5>'.$fname.' '.$lname.'. made changes in jagvillage services '.$row_data['recipent_name'].' on '.date('l', strtotime($date)).', '.date('F j Y', strtotime($date)).'.</h5>
+						  <h5>'.$fname.' '.$lname.'. made changes in jagvillage services '.$row_data['recipent_name'].' on '.date('l', strtotime($date)).', '.date('F j Y', strtotime($date)).' Time is:'.$time.' Service name is:'.$service.'.</h5>  
 
 						  <h5>You can view Jagvillage Service by clicking the following button.</h5>
 
@@ -1062,7 +1037,7 @@
 									<table border="0" cellpadding="0" cellspacing="0">
 									  <tbody>
 										<tr>
-										  <td> <a href="http://test.jagvillage.com/jagvillage-service.php?key='.$key.'" target="_blank">View</a> </td>
+										  <td> <a href="http://jagvillage.com/jagvillage-service.php?key='.$key.'" target="_blank">View</a> </td>
 										</tr>
 									  </tbody>
 									</table>
@@ -1109,7 +1084,35 @@
                  echo '<script>window.open("confirm.php?key='.$key.'","_self");</script>';   
             }
         ?>
-        
+        <div class="modal fade cancel" id="event-modal" tabindex="-1" role="dialog" id="addcalendar" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title">Confirm</h4>
+      </div>
+      <div class="modal-body">
+        <form action="delete-vol.php" method="post">
+        <div class="form-group">
+        <p><b>The scheduled participant will be cancelled. this item will become available for others to book.</b></p>
+        <h6 id="date"></h6>
+			<label for="need">The reciepent will be notified of the cancellation. To include personal message, enter it below.</label>
+            <textarea name="note" class="form-control" id="" cols="30" rows="10"></textarea>
+	    </div>
+      </div>
+      <input type="hidden" name="token" value="<?php echo $key; ?>">
+      <input type="hidden" name="date" value="<?php echo $date; ?>">
+       <input type="hidden" name="cate_id" value="<?php echo $_GET['id']; ?>">
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-danger" name="cancel">Cancel Booking</button>
+        </form>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
 		<!-- End Top Header Section -->
 		<!-- Slider Section -->
 		<section id="slider">
@@ -1142,7 +1145,12 @@
                 <div class="panel panel-default">
                     <div class="panel-body">
                     <strong>Preferred delivery time</strong>
-                    <p><?php echo ($row_data['delivery_time'] != "") ? $row_data['delivery_time'] : "Not specified";?></p>
+                    <?php 
+						$get_time = "select * from category_date where service_token='$key' and date = '$date'";
+						$run_time = mysqli_query($con,$get_time);
+						$row_time = mysqli_fetch_array($run_time);
+					?>
+                    <p><?php echo ($row_time['time'] != "") ? $row_time['time'] : "Not specified";?></p>
                     <strong>Special Instructions</strong>
                     <p><?php echo ($row_data['instuction'] != "") ? $row_data['instuction'] : "Not specified";?></p>
                     <strong>Comments</strong>
@@ -1157,10 +1165,10 @@
                                     <div class="panel panel-default">
                     <div class="panel-body">
                     <div class="section-body">
-					<div class="alert alert-info">Please enter a meal description and any notes.</div>
+					<div class="alert alert-info">Please enter a service description and any notes.</div>
 				    <div class="row">
                         <?php 
-                            $check = "select * from volunteer where token='$key' and date='$date'";
+                            $check = "select * from volunteer where token='$key' and date='$date' and cate_id='$id'";
                             $c_run = mysqli_query($con,$check);
                             $c_row = mysqli_fetch_array($c_run);
                         ?>
@@ -1208,9 +1216,9 @@
 		<section id="footer" class="dark" >
 			<div class="container" >
 				<ul>
-					<li><a href="#" align="center">&#64; 2020 Jag Village</a></li>
-					<li><a href="#" align="center"> Privacy Policy</a></li>
-					<li><a href="#" align="center">Terms of Use</a></li>
+					<li><a href="develop-by.php" align="center">Copyright 2020 &#64; Design & Develop By Jag Village</a></li>
+					<li><a href="terms-of-use.php" align="center"> Privacy Policy</a></li>
+					<li><a href="terms-of-use.php" align="center">Terms of Use</a></li>
 				</ul>
 				
 			</div>

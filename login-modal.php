@@ -308,8 +308,8 @@ echo '<label class="help-block form-error">Email or password is incorrect</lable
 						<tr>
 						  <td>
 						  <center>
-                          <img src="http://test.jagvillage.com/images/logo.png" /></center>
-                          <p>'.$fname.' '.$lname.' has invited you to join the meal</p>
+                          <img src="http://jagvillage.com/images/logo.png" /></center>
+                          <p>'.$fname.' '.$lname.' has invited you to join the J.A.G. Village “It takes a Village Service”.</p>
 						  </td>
                         </tr>
                         <tr>
@@ -317,20 +317,19 @@ echo '<label class="help-block form-error">Email or password is incorrect</lable
 									<table border="0" cellpadding="0" cellspacing="0">
 									  <tbody>
 										<tr>
-										  <h5>What is a jagvillage?</h5>
-										  <p>There are times in our lives when friends and family ask, "what can i do to help out?" The answer is usually to help them with a meal. when many friends give a meal, this is a jagvillage.</p>
+										  <h5>What is the J.A.G. Village “It takes a Village” service?</h5>
 										</tr>
 										<tr>
-                                          <p><a href="http://test.jagvillage.com">Jagvillage</a> is a free meal calendar tool that makes planning meal among a wide group easy and less stressful.</p>
-                                          <p>Please share this email with others</p>
-                                          <p>You can view the meal by clicking the following button.</p>
+                                          <p>When a person is grieving, we often ask them to reach out if they need something, anything at all, however, they rarely do.  When people are in pain instead of asking them to do more, we the Village (friends, colleagues, family) can reach in.  “It takes a Village” @jagvillage.com is an online platform that helps to organize the support required for everyday needs, both tangible and emotional, of those who are grieving.</p>
+                                          <p>Helping Hands can begin healing hearts. Please use this link to sign up for a service that meets the unique needs of your person!</p>
+                                          <p>Please share this email with other friends who may want to help.</p>
                                         </tr>
                                         <tr>
 								  <td align="left">
 									<table border="0" cellpadding="0" cellspacing="0">
 									  <tbody>
 										<tr>
-										  <td> <a href="http://test.jagvillage.com/jagvillage-service.php?key='.$token.'" target="_blank">Open the Jagvillage Service</a> </td>
+										  <td> <a href="http://jagvillage.com/jagvillage-service.php?key='.$token.'" target="_blank">Open the Jagvillage Service</a> </td>
 										</tr>
 									  </tbody>
 									</table>
@@ -636,8 +635,8 @@ echo '<label class="help-block form-error">Email or password is incorrect</lable
 						<tr>
 						  <td>
 						  <center>
-                          <img src="http://test.jagvillage.com/images/logo.png" /></center>
-                          <p>'.$fname.' '.$lname.' has invited you to join the meal</p>
+                          <img src="http://jagvillage.com/images/logo.png" /></center>
+                          <p>'.$fname.' '.$lname.' has invited you to join the Service.</p>
 						  </td>
                         </tr>
                         <tr>
@@ -645,20 +644,19 @@ echo '<label class="help-block form-error">Email or password is incorrect</lable
 									<table border="0" cellpadding="0" cellspacing="0">
 									  <tbody>
 										<tr>
-										  <h5>What is a jagvillage?</h5>
-										  <p>There are times in our lives when friends and family ask, "what can i do to help out?" The answer is usually to help them with a meal. when many friends give a meal, this is a jagvillage.</p>
+										  <h5>What is the J.A.G. Village “It takes a Village” service?</h5>
 										</tr>
 										<tr>
-                                          <p><a href="http://test.jagvillage.com">Jagvillage</a> is a free meal calendar tool that makes planning meal among a wide group easy and less stressful.</p>
-                                          <p>Please share this email with others</p>
-                                          <p>You can view the meal by clicking the following button.</p>
+                                          <p>When a person is grieving, we often ask them to reach out if they need something, anything at all, however, they rarely do.  When people are in pain instead of asking them to do more, we the Village (friends, colleagues, family) can reach in.  “It takes a Village” @jagvillage.com is an online platform that helps to organize the support required for everyday needs, both tangible and emotional, of those who are grieving.</p>
+                                          <p>Helping Hands can begin healing hearts. Please use this link to sign up for a service that meets the unique needs of your person!</p>
+                                          <p>Please share this email with other friends who may want to help.</p>
                                         </tr>
                                         <tr>
 								  <td align="left">
 									<table border="0" cellpadding="0" cellspacing="0">
 									  <tbody>
 										<tr>
-										  <td> <a href="http://test.jagvillage.com/jagvillage-service.php?key='.$token.'" target="_blank">Open the Jagvillage Service</a> </td>
+										  <td> <a href="http://jagvillage.com/jagvillage-service.php?key='.$token.'" target="_blank">Open the Jagvillage Service</a> </td>
 										</tr>
 									  </tbody>
 									</table>

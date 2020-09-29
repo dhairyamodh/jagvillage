@@ -277,14 +277,12 @@ if(!empty($_SESSION['admin_email'])){
 
 $(function() {
                     var isRtl = $('body').attr('dir') === 'rtl' || $('html').attr('dir') === 'rtl';
-                    $('input[name="date"]').daterangepicker({
-                      autoUpdateInput: false,
-                      singleDatePicker:true,
-                      showDropdowns:true,
-                      locale: {
-                          cancelLabel: 'Clear'
-                      }
-                  });
+                    $('input[name="date"]').datepicker({
+          showOtherMonths: true,
+          selectOtherMonths: true,
+          dateFormat: 'yy-mm-dd',
+          minDate: 'today'
+        });
                   $('input[name="date"]').on('apply.daterangepicker', function(ev, picker) {
                     $(this).val(picker.startDate.format('DD/MM/YYYY'));
                 });

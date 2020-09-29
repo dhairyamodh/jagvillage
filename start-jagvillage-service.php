@@ -64,7 +64,7 @@ if($cate_run){
 	require 'phpmailer/PHPMailerAutoload.php';
     $mail = new PHPMailer;
     $mail->Host = 'mail.jagvillage.com';     //Sets the SMTP hosts of your Email hosting, this for Godaddy
-    $mail->Port = 143;                              //Sets the default SMTP server port
+    $mail->Port = 993;                              //Sets the default SMTP server port
     $mail->SMTPAuth = true;                         //Sets SMTP authentication. Utilizes the Username and Password variables
     $mail->SMTPSecure = 'ssl';
     $mail->Username = 'info@jagvillage.com';                  //Sets SMTP username
@@ -329,10 +329,10 @@ if($cate_run){
 						<tr>
 						  <td>
 						  <center>
-                          <img src="http://test.jagvillage.com/images/logo.png" /></center>
+                          <img src="http://jagvillage.com/images/logo.png" /></center>
 							
 							<p>Hi '.$rname.'</p>
-							<h5>Important! Please verify your meal</h5>
+							<h5>Important! Please verify your service</h5>
 							<p>'.$fname.' '.$lname.' created for you from </p>
 							<table border="0" cellpadding="0" cellspacing="0" class="btn btn-primary">
 							  <tbody>
@@ -341,16 +341,16 @@ if($cate_run){
 									<table border="0" cellpadding="0" cellspacing="0">
 									  <tbody>
 										<tr>
-										  <td> <a href="http://test.jagvillage.com/jagvillage-service.php?key='.$token.'" target="_blank">Verify My Jagvillage Service</a> </td>
+										  <td> <a href="http://jagvillage.com/jagvillage-service.php?key='.$token.'" target="_blank">Please Verify My Jagvillage Service</a> </td>
 										</tr>
 									  </tbody>
 									</table>
 								  </td>
 								</tr>
-								<h5>What is a jagvillage?</h5>
-								<p>There are times in our lives when friends and family ask, "what can i do to help out?" The answer is usually to help them with a meal. when many friends give a meal, this is a jagvillage.</p>
+								<h5>What is the J.A.G. Village “It takes a Village” service?</h5>
+								<p>We know the loss of a loved one affects every aspect of our life.  Our friends and family often ask us to reach out if theres anything we need, but more often than not we are too shy, too sad, too confused, too proud, or too overwhelmed to respond or to ask for support.   “It Takes A Village” is an online platform that helps organize your support team by allowing your friends, colleagues, and family to sign up for services that support your unique needs during these difficult times.</p>
 										
-								 <p><a href="http://test.jagvillage.com">Jagvillage</a> is a free meal calendar tool that makes planning meal among a wide group easy and less stressful.</p>
+								 <p><a href="http://jagvillage.com">Jagvillage</a> is an online platform that helps to organize the support required for everyday needs, both tangible and emotional, of those who are grieving.</p>
 										
 									  
 							  </tbody>
@@ -394,7 +394,7 @@ if($run){
     
     $mail_org = new PHPMailer;
 	$mail_org->Host = 'mail.jagvillage.com';     //Sets the SMTP hosts of your Email hosting, this for Godaddy
-    $mail_org->Port = 143;                              //Sets the default SMTP server port
+    $mail_org->Port = 993;                              //Sets the default SMTP server port
     $mail_org->SMTPAuth = true;                         //Sets SMTP authentication. Utilizes the Username and Password variables
     $mail_org->SMTPSecure = 'ssl';
     $mail_org->Username = 'info@jagvillage.com';                  //Sets SMTP username
@@ -659,9 +659,9 @@ if($run){
 						<tr>
 						  <td>
 						  <center>
-                          <img src="http://test.jagvillage.com/images/logo.png" /></center>
+                          <img src="http://jagvillage.com/images/logo.png" /></center>
 							<p>Hi '.$fname.' '.$lname.',</p>
-							<h5>Thank you for creating a Jagvillage Service for '.$rname.'. The unique link associated with this Jagvillage Service is: <a href="http://test.jagvillage.com/jagvillage-service.php?key='.$token.'" target="_blank">http://test.jagvillage.com/jagvillage-service.php?key='.$token.'</a></h5>
+							<h5>Thank you for creating a Jagvillage Service for '.$rname.'. The unique link associated with this Jagvillage Service is: <a href="http://jagvillage.com/jagvillage-service.php?key='.$token.'" target="_blank">http://jagvillage.com/jagvillage-service.php?key='.$token.'</a></h5>
 							<p>Tip #1: Invite Others</p><br>
 							<p>Each volunteer must click or enter the above unique web address. You can provide it to them by:</p>
 							<br>
@@ -716,7 +716,7 @@ echo $msg;
 	    <title>Jag Village</title>
 	    <!-- Meta content -->
 	    <meta content='Project' name='description'>
-	    <meta content='Hope Charity' name='keywords'>
+	    <meta content='Jag Village' name='keywords'>
 	    <meta content='width=device-width, initial-scale=1' name='viewport'>
         <!-- Favicon -->
         <link rel='shortcut icon' href='favicon.png' type='image/png'/>
@@ -812,7 +812,7 @@ echo $msg;
 							</ul>
 						</div>
 						<fieldset class="wizard-fieldset show">
-						<span class="error-first" style="font-size: 15px; text-align:center; display:none; color: #c73b0c;">Please fill up required fields</span>
+						<span class="error-first" style="font-size: 15px; text-align:center; display:none; color: #c73b0c;">Please fill up all required fields *</span>
 							<h5>THIS SERVICE IS FOR</h5>
 							<div class="row">
 							<div class="col-md-6">
@@ -836,8 +836,8 @@ echo $msg;
 							<div class="col-md-12">
 								
 							<div class="form-group">
-								<input type="text" class="form-control" name="address" id="add">
-								<label for="add" class="wizard-form-text-label">Address</label>
+								<input type="text" class="form-control wizard-required city" name="address" id="add">
+								<label for="add" class="wizard-form-text-label">Address*</label>
 								<div class="wizard-form-error"></div>
 							</div>
 							</div>
@@ -915,6 +915,8 @@ echo $msg;
 							<div class="form-group">
 								<select class="form-control time wizard-required" name="time[]" required>
 								<option selected disabled value="">--select time--</option>
+								<option value="10am - 11am">8am - 9am</option>
+								<option value="10am - 11am">9am - 10am</option>
 								<option value="10am - 11am">10am - 11am</option>
 								<option value="11am - 12pm">11am - 12pm</option>
 								<option value="12pm - 1pm">12pm - 1pm</option>
@@ -923,6 +925,8 @@ echo $msg;
 								<option value="3pm - 4pm">3pm - 4pm</option>
 								<option value="4pm - 5pm">4pm - 5pm</option>
 								<option value="5pm - 6pm">5pm - 6pm</option>
+								<option value="10am - 11am">6pm - 7pm</option>
+								<option value="10am - 11am">7pm - 8pm</option>
 								</select>
 							<label for="phone" class="wizard-form-text-label">Select Preferred Time *</label>
 								
@@ -1046,9 +1050,9 @@ echo $msg;
 		<section id="footer" class="dark">
 			<div class="container" >
 				<ul>
-					<li><a href="#" align="center">&#64; 2020 Jag Village</a></li>
-					<li><a href="#" align="center"> Privacy Policy</a></li>
-					<li><a href="#" align="center">Terms of Use</a></li>
+					<li><a href="develop-by.php" align="center">Copyright 2020 &#64; Design & Develop By Jag Village</a></li>
+					<li><a href="privacy-policy.php" align="center"> Privacy Policy</a></li>
+					<li><a href="terms-of-use.php" align="center">Terms of Use</a></li>
 				</ul>
 				
 			</div>
@@ -1141,7 +1145,7 @@ $(document).ready(function(){
   html += '<div class="col-md-2 id'+i+'"><div class="form-group"><select name="category[]" class="form-control cate wizard-required" required><option selected disabled>--select category--</option><option value="Meals">Meals </option><option value="Yard Work">Yard Work </option><option value="Child Support">Child Support </option><option value="Visits">Visits </option><option value="Errands">Errands </option><option value="Service">Service </option><option value="Other">Other</option></select><label for="phone" class="wizard-form-text-label">Select Category</label></div></div>';
   html += '<div class="col-md-3 id'+i+'"><div class="form-group"><input type="text" class="form-control date wizard-required" name="date[]" placeholder="No Date Selected"  ><label for="phone" class="wizard-form-text-label">Select Date *</label></div></div>';
   html += '<div class="col-md-3 id'+i+'"><div class="form-group"><input type="text" class="form-control" name="need[]" placeholder="Enter Need"><label for="phone" class="wizard-form-text-label">Need (optional)</label></div></div>';
-  html += '<div class="col-md-3 id'+i+'"><div class="form-group"><select class="form-control time wizard-required" name="time[]" required><option selected disabled>--select time--</option><option value="10am - 11am">10am - 11am</option><option value="11am - 12pm">12am - 12pm</option><option value="12pm - 1pm">12pm - 1pm</option><option value="1pm - 2pm">1pm - 2pm</option><option value="2pm - 3pm">2pm - 3pm</option><option value="3pm - 4pm">3pm - 4pm</option><option value="4pm - 5pm">4pm - 5pm</option><option value="5pm - 6pm">5pm - 6pm</option></select><label for="phone" class="wizard-form-text-label">Select Preferred Time *</label></div></div>';
+  html += '<div class="col-md-3 id'+i+'"><div class="form-group"><select class="form-control time wizard-required" name="time[]" required><option selected disabled>--select time--</option><option value="8am - 9am">8am - 9am</option><option value="9am - 10am">9am - 10am</option><option value="10am - 11am">10am - 11am</option><option value="11am - 12pm">11am - 12pm</option><option value="12pm - 1pm">12pm - 1pm</option><option value="1pm - 2pm">1pm - 2pm</option><option value="2pm - 3pm">2pm - 3pm</option><option value="3pm - 4pm">3pm - 4pm</option><option value="4pm - 5pm">4pm - 5pm</option><option value="5pm - 6pm">5pm - 6pm</option><option value="6pm - 7pm">6pm - 7pm</option><option value="7pm - 8pm">7pm - 8pm</option></select><label for="phone" class="wizard-form-text-label">Select Preferred Time *</label></div></div>';
   html += '<div class="col-md-1 id'+i+'"><div class="form-group"><button type="button" name="add" class="btn btn-danger remove" id="'+i+'"><i class="fa fa-minus"></i></button></div></div>';
   $('#load').append(html);
  });

@@ -1,5 +1,5 @@
 <?php 
-$email1 = "jaybpatel27.jp@gmail.com";
+$email1 = "info@jagvillage.com";
 require 'phpmailer/PHPMailerAutoload.php';
     $mail = new PHPMailer;
     $mail->Host = 'mail.jagvillage.com';     //Sets the SMTP hosts of your Email hosting, this for Godaddy

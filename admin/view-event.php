@@ -127,7 +127,7 @@ if(!empty($_SESSION['admin_email'])){
                      <div class="d-flex justify-content-between">
                         <div class="clearfix">
                            <div class="pd-t-5 pd-b-5">
-                              <h1 class="pd-0 mg-0 tx-20 tx-dark">View Users</h1>
+                              <h1 class="pd-0 mg-0 tx-20 tx-dark">View Events</h1>
                            </div>
                            
                         </div>
@@ -149,7 +149,7 @@ if(!empty($_SESSION['admin_email'])){
                            <div class="card-header">
                               <div class="d-flex justify-content-between align-items-center">
                                  <div>
-                                    <h6 class="card-header-title tx-13 mb-0">View Users</h6>
+                                    <h6 class="card-header-title tx-13 mb-0">View Events</h6>
                                  </div>
                                  
                               </div>

@@ -36,12 +36,12 @@ $rows = mysqli_num_rows($result);
 
 		mysqli_query($con,$insert_token);
 
-		$link = 'http://test.jagvillage.com/change-password.php?token='.$token;
+		$link = 'http://jagvillage.com/change-password.php?token='.$token;
 
     require 'phpmailer/PHPMailerAutoload.php';
     $mail = new PHPMailer;
     $mail->Host = 'mail.jagvillage.com';     //Sets the SMTP hosts of your Email hosting, this for Godaddy
-    $mail->Port = 143;                              //Sets the default SMTP server port
+    $mail->Port = 993;                              //Sets the default SMTP server port
     $mail->SMTPAuth = true;                         //Sets SMTP authentication. Utilizes the Username and Password variables
     $mail->SMTPSecure = 'ssl';
     $mail->Username = 'info@jagvillage.com';                  //Sets SMTP username
@@ -89,7 +89,7 @@ $msg = '<label class="help-block form-error">You are not registered with this em
 	    <title> Forgot Password | Jag Village</title>
 	    <!-- Meta content -->
 	    <meta content='Project' name='description'>
-	    <meta content='Hope Charity' name='keywords'>
+	    <meta content='Jag Village' name='keywords'>
 	    <meta content='width=device-width, initial-scale=1' name='viewport'>
         <!-- Favicon -->
         <link rel='shortcut icon' href='favicon.png' type='image/png'/>
@@ -158,8 +158,8 @@ $msg = '<label class="help-block form-error">You are not registered with this em
 			<div class="container" >
 				<ul>
 					<li><a href="#" align="center">&#64; 2020 Jag Village</a></li>
-					<li><a href="#" align="center"> Privacy Policy</a></li>
-					<li><a href="#" align="center">Terms of Use</a></li>
+					<li><a href="privacy-policy.php" align="center"> Privacy Policy</a></li>
+					<li><a href="terms-of-use.php" align="center">Terms of Use</a></li>
 				</ul>
 				
 			</div>
