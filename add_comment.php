@@ -20,11 +20,12 @@ if (empty($_POST["comment_content"])) {
     $comment_content = $_POST["comment_content"];
 }
 $comment_id = $_POST["comment_id"];
+$blog_id = $_POST["blog_id"];
 if ($error == '') {
     $query = "
  insert into comments 
- (comment_id, comment, sender_name,date) 
- VALUES ('$comment_id','$comment_content','$comment_name',now())
+ (comment_id,blog_id, comment, sender_name,date) 
+ VALUES ('$comment_id','$blog_id','$comment_content','$comment_name',now())
  ";
     // $run = mysqli_query($con, $query);
     $error = mysqli_query($con, $query) ? '<label class="text-success">Comment Added</label>' : '<label class="text-danger">Comment Not Added</label>';

@@ -25,7 +25,13 @@ require('db.php');
 	<link href='css/jquery.bxslider.css' rel='stylesheet'>
 	<link href='css/owl.carousel.min.css' rel='stylesheet'>
 	<link href='css/template.css' rel='stylesheet'>
-
+	<style>
+		label {
+			color: #159397;
+			font-weight: 700;
+			font-size: 1.1em;
+		}
+	</style>
 </head>
 
 <body>
@@ -61,62 +67,74 @@ require('db.php');
 
 	$sql = "select * from blog where blog_id='$id'";
 	$run = mysqli_query($con, $sql);
-	$i = 0;
-	while ($row = mysqli_fetch_array($run)) {
-		$title = $row['blog_title'];
-		$img = $row['blog_img'];
-		$desc = $row['blog_desc'];
-	}
+	if (mysqli_num_rows($run)) {
+		$i = 0;
+		while ($row = mysqli_fetch_array($run)) {
+			$title = $row['blog_title'];
+			$img = $row['blog_img'];
+			$desc = $row['blog_desc'];
+		}
 	?>
-	<section id="contacts">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12 text-center" style="margin-bottom: 20px;">
-					<h2 class="h2" style="border-bottom: 2px solid #159397; padding-bottom: 20px;"><?php echo $title; ?></h2>
-				</div>
-				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+		<section id="contacts">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12 text-center" style="margin-bottom: 20px;">
+						<h2 class="h2" style="border-bottom: 2px solid #159397; padding-bottom: 20px;"><?php echo $title; ?></h2>
+					</div>
+					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 
-					<img src="admin/upload/blog/<?php echo $img; ?>" alt="" style="width: 80%; border:3px solid #159397; border-radius: 10px;">
-				</div>
-				<div class="col-lg-6">
+						<img src="admin/upload/blog/<?php echo $img; ?>" alt="" style="width: 80%; border:3px solid #159397; border-radius: 10px;">
+					</div>
+					<div class="col-lg-6">
 
-					<p style="text-align:justify; font-weight: 600;"><?php echo $desc; ?></p>
+						<p style="text-align:justify; font-weight: 600;"><?php echo $desc; ?></p>
 
 
 
-				</div>
+					</div>
 
-				<div class="card col-md-12" style="margin-top:20px;">
-					<div class="panel panel-default">
-						<div class="panel-body">
-							<p style="color: #159397; font-size:20px; font-weight:600">113 Comments : </p>
-							<form class="cmxform" method="post" id="comment_form">
-
-								<div class="form-group">
+					<div class="card col-md-12" style="margin-top:20px;">
+						<div class="panel panel-default">
+							<div class="panel-body">
+								<p style="color: #159397; font-size:20px; font-weight:600">Leave a Comment</p>
+								<hr>
+								<form class="cmxform" method="post" id="comment_form">
+									<label for="fname">Name</label>
+									<input id="fname" placeholder="Enter Name" type="text" name="comment_name" id="comment_name" required>
+									<!-- <div class="form-group">
 									<input type="text" name="comment_name" id="comment_name" class="form-control" placeholder="Enter Name" />
-								</div>
-								<div class="form-group">
+								</div> -->
+									<label for="fname">Comment</label>
+									<textarea name="comment_content" id="comment_content" placeholder="Enter Comment" rows="5"></textarea>
+									<!-- <div class="form-group">
 									<textarea name="comment_content" id="comment_content" class="form-control" placeholder="Enter Comment" rows="5"></textarea>
-								</div>
-								<input type="hidden" name="comment_id" id="comment_id" value="0" />
-								<button class="btn btn-primary" name="submit" id="submit" type="submit">Submit</button><br>
-							</form>
-							<span id="comment_message"></span>
-							<br />
-							<div id="display_comment"></div>
-						</div>
+								</div> -->
+									<input type="hidden" name="comment_id" id="comment_id" value="0" />
+									<input type="hidden" name="blog_id" id="blog_id" value="<?php echo $id ?>" />
+									<button class="btn btn-primary" name="submit" id="submit" type="submit">Submit</button><br>
+								</form>
 
+								<span id="comment_message"></span>
+								<div id="display_comment"></div>
+							</div>
+
+						</div>
 					</div>
 				</div>
 			</div>
-		</div>
 
 
-		</div>
+			</div>
 
-		</div>
+			</div>
 
-	</section>
+		</section>
+	<?php
+	} else {
+		echo '<section id="contacts">
+		<div class="container"><h2 class="text-danger text-center">No blog available</h2></div></section>';
+	}
+	?>
 
 	<!-- End About Section -->
 
@@ -160,7 +178,6 @@ require('db.php');
 	<script src="js/scrollreveal.min.js"></script>
 	<script src="js/script.js"></script>
 
-	<script async defer src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;key=AIzaSyC2rmifeU7p_fNAEfqOPFEytxVFCt61Xmc&amp;callback=initMap">
 	</script>
 	<script>
 		$(document).ready(function() {
@@ -187,9 +204,13 @@ require('db.php');
 			load_comment();
 
 			function load_comment() {
+				var id = $("#blog_id").val();
 				$.ajax({
 					url: "fetch_comment.php",
 					method: "POST",
+					data: {
+						id: id
+					},
 					success: function(data) {
 						$('#display_comment').html(data);
 					}

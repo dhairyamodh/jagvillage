@@ -3,7 +3,7 @@
 require('db.php');
 ?>
 <section id="header">
-	<div class="container">
+	<div class="container" style="display: flex;align-items:center; justify-content:space-between">
 		<div id="logo" class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
 			<a href="index.php"><img src="images/logo.png" alt="Logo" /></a>
 		</div>
@@ -13,8 +13,6 @@ require('db.php');
 			</div><!-- end navbar-header -->
 			<div class="collapse navbar-collapse yamm">
 				<nav class="navbar w3_megamenu" role="navigation" style="min-height: 0; margin-bottom:0">
-
-
 					<div class="navbar-collapse collapse">
 						<ul class="nav navbar-nav">
 							<li class="<?php echo (basename($_SERVER['PHP_SELF']) == "index.php") ? "active" : ""; ?>">
@@ -22,17 +20,13 @@ require('db.php');
 							</li>
 							<li class="<?php echo (basename($_SERVER['PHP_SELF']) == "about.php") ? "active" : ""; ?>">
 								<a href="about.php">About Us</a>
-
 							</li>
 							<li class="<?php echo (basename($_SERVER['PHP_SELF']) == "service.php") ? "active" : ""; ?>">
 								<a href="service.php">Services</a>
 							</li>
-							<!-- <li class="<?php echo (basename($_SERVER['PHP_SELF']) == "it-takes-village.php") ? "active" : ""; ?>">
-                                <a href="it-takes-village.php">It takes a village</a>
-                            </li> -->
 							<li class="<?php echo (basename($_SERVER['PHP_SELF']) == "it-takes-village.php") ? "active" : ""; ?> dropdown w3_megamenu-fw"><a href="it-takes-village.php" data-toggle="dropdown" class="dropdown-toggle">It takes a village<b class="caret"></b></a>
 								<ul class="dropdown-menu fullwidth">
-									<li class="w3_megamenu-content withdesc">
+									<li class="w3_megamenu-content ">
 										<div class="row">
 											<div class="col-sm-4">
 												<h3 class="title">Meals</h3>
@@ -137,12 +131,12 @@ require('db.php');
 			}
 		}
 	</style>
-	<nav class="navbar w3_megamenu mobile" style="min-height: 0; margin-bottom:0">
+	<nav class="navbar w3_megamenu mobile" style="min-height: 0; margin-bottom:0;">
 
 
 		<div id="defaultmenu" class="navbar-collapse collapse">
-			<ul class="nav navbar-nav">
-				<li class="<?php echo (basename($_SERVER['PHP_SELF']) == "index.php") ? "active" : ""; ?>">
+			<ul class="nav navbar-nav pre-scrollable">
+				<li style="overflow: scroll;" class="<?php echo (basename($_SERVER['PHP_SELF']) == "index.php") ? "active" : ""; ?>">
 					<a href="index.php">Home</a>
 				</li>
 				<li class="<?php echo (basename($_SERVER['PHP_SELF']) == "about.php") ? "active" : ""; ?>">
@@ -152,9 +146,6 @@ require('db.php');
 				<li class="<?php echo (basename($_SERVER['PHP_SELF']) == "service.php") ? "active" : ""; ?>">
 					<a href="service.php">Services</a>
 				</li>
-				<!-- <li class="<?php echo (basename($_SERVER['PHP_SELF']) == "it-takes-village.php") ? "active" : ""; ?>">
-                                <a href="it-takes-village.php">It takes a village</a>
-                            </li> -->
 				<li class="<?php echo (basename($_SERVER['PHP_SELF']) == "it-takes-village.php") ? "active" : ""; ?> dropdown w3_megamenu-fw"><a href="it-takes-village.php" data-toggle="dropdown" class="dropdown-toggle">It takes a village<b class="caret"></b></a>
 					<ul class="dropdown-menu fullwidth">
 						<li class="w3_megamenu-content withdesc">
@@ -162,7 +153,7 @@ require('db.php');
 								<div class="col-sm-4">
 									<h3 class="title">Meals</h3>
 									<ul>
-										<li><a href="#">Breakfast</a></li>
+										<li><a href="meal-service.php">Breakfast</a></li>
 										<li><a href="#">Lunch</a></li>
 										<li><a href="#">Supper</a></li>
 										<li><a href="#">Snacks</a></li>

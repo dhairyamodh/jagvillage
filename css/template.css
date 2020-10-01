@@ -282,8 +282,8 @@ h2.colored-bg {
 */
 
 section#header {
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   border-top: 15px solid #000;
   position: fixed;
   width: 100%;
@@ -1415,6 +1415,7 @@ input[type="radio"]:not(old):checked + label > span > span {
   padding: 10px 20px;
   margin: 5px 0px;
   transition: color 0.3s;
+  white-space: normal;
 }
 
 .btn-danger {
@@ -2129,15 +2130,6 @@ a.btn-secondary:focus {
     opacity: 0;
   }
 }
-@media screen and (max-width: 767px) {
-  .wizard-content-left {
-    height: auto;
-  }
-  .form-wizard .form-wizard-steps li span {
-    font-size: 12px;
-    padding: 3px;
-  }
-}
 
 .float-left {
   float: left;
@@ -2162,12 +2154,15 @@ a.btn-secondary:focus {
 } */
 .w3_megamenu-fw .dropdown-menu ul li a {
   padding: 0px;
-  color: #363636;
+  color: #000;
   text-transform: none;
 }
-.w3_megamenu-fw .dropdown-menu ul li:hover a {
-  color: #159397;
-  text-decoration: underline;
+.w3_megamenu-fw .dropdown-menu ul li a {
+  display: block;
+  padding: 6px 15px;
+}
+.w3_megamenu-fw .dropdown-menu ul li:hover {
+  background-color: #efefef;
 }
 .w3_megamenu .dropdown-menu > li > a {
   padding: 6px 15px;
@@ -2385,4 +2380,18 @@ a.btn-secondary:focus {
   text-shadow: none;
   color: #333;
   border: 1px solid #ddd;
+}
+
+@media screen and (max-width: 767px) {
+  .wizard-content-left {
+    height: auto;
+  }
+  .form-wizard .form-wizard-steps li span {
+    font-size: 12px;
+    padding: 3px;
+  }
+  .w3_megamenu-fw .dropdown-menu ul li a {
+    display: block;
+    padding: 0px;
+  }
 }
