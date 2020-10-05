@@ -57,7 +57,7 @@ session_start();
     <section id="about">
         <div class="container">
             <div class="section-title">
-                <h2 class="dark-bg">Breakfast
+                <h2 class="dark-bg">Meals
                 </h2>
             </div>
             <div class="row">
@@ -132,7 +132,7 @@ session_start();
         <div class="container">
             <div class="col-md-12">
                 <div class="section-title">
-                    <h2 class="dark-bg">Lunch</h2>
+                    <h2 class="dark-bg">Child Care</h2>
                 </div>
                 <div class="row">
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -155,7 +155,7 @@ session_start();
     <section id="about">
         <div class="container">
             <div class="section-title">
-                <h2 class="dark-bg">Supper</h2>
+                <h2 class="dark-bg">Visit</h2>
             </div>
             <div class="row">
                 <div class="col-lg-6" style="margin-bottom:20px;">
@@ -179,7 +179,57 @@ session_start();
         <div class="container">
             <div class="col-md-12">
                 <div class="section-title">
-                    <h2 class="dark-bg">Snacks</h2>
+                    <h2 class="dark-bg">Errands</h2>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+
+
+                        <img src="https://via.placeholder.com/800x400" style="border:1px solid #159397; border-radius: 25px; object-fit: cover;" />
+
+                    </div>
+                    <div class="col-lg-6" style="margin-bottom:20px;">
+                        <p style="font-weight:600; font-size: 15px;  text-align: justify;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+
+                    </div>
+
+                </div>
+                <div style="width: 100%;display: flex; justify-content:center; margin-top:20px;">
+                    <a href="start-jagvillage-service.php" class="btn btn-primary ">Start Service</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2 class="dark-bg">Yard Work</h2>
+            </div>
+            <div class="row">
+                <div class="col-lg-6" style="margin-bottom:20px;">
+                    <p style="font-weight:600; font-size: 15px;  text-align: justify;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                </div>
+
+
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+
+
+                    <img src="https://via.placeholder.com/800x400" style="border:1px solid #159397; border-radius: 25px; object-fit: cover;" />
+
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="container">
+            <div class="col-md-12">
+                <div class="section-title">
+                    <h2 class="dark-bg">Services</h2>
                 </div>
                 <div class="row">
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">

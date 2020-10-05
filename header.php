@@ -4,12 +4,12 @@ require('db.php');
 ?>
 <section id="header">
 	<div class="container" style="display: flex;align-items:center; justify-content:space-between">
-		<div id="logo" class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
+		<div id="logo" class="col-lg-1 col-md-1 col-sm-1 col-xs-6">
 			<a href="index.php"><img src="images/logo.png" alt="Logo" /></a>
 		</div>
-		<div class="col-lg-10 col-md-10 col-sm-10 col-xs-6 top-navigation">
+		<div class="col-lg-11 col-md-11 col-sm-11 col-xs-6 top-navigation">
 			<div class="navbar-header">
-				<button type="button" data-toggle="collapse" data-target="#defaultmenu" class="navbar-toggle"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a href="#" class="navbar-brand"></a>
+				<button style="margin-right:0;" type="button" data-toggle="collapse" data-target="#defaultmenu" class="navbar-toggle"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a href="#" class="navbar-brand"></a>
 			</div><!-- end navbar-header -->
 			<div class="collapse navbar-collapse yamm">
 				<nav class="navbar w3_megamenu" role="navigation" style="min-height: 0; margin-bottom:0">
@@ -24,7 +24,10 @@ require('db.php');
 							<li class="<?php echo (basename($_SERVER['PHP_SELF']) == "service.php") ? "active" : ""; ?>">
 								<a href="service.php">Services</a>
 							</li>
-							<li class="<?php echo (basename($_SERVER['PHP_SELF']) == "it-takes-village.php") ? "active" : ""; ?> dropdown w3_megamenu-fw"><a href="it-takes-village.php" data-toggle="dropdown" class="dropdown-toggle">It takes a village<b class="caret"></b></a>
+							<li class="<?php echo (basename($_SERVER['PHP_SELF']) == "meal-service.php") ? "active" : ""; ?>">
+								<a href="meal-service.php">It takes a village</a>
+							</li>
+							<!-- <li class="<?php echo (basename($_SERVER['PHP_SELF']) == "it-takes-village.php") ? "active" : ""; ?> dropdown w3_megamenu-fw"><a href="it-takes-village.php" data-toggle="dropdown" class="dropdown-toggle">It takes a village<b class="caret"></b></a>
 								<ul class="dropdown-menu fullwidth">
 									<li class="w3_megamenu-content ">
 										<div class="row">
@@ -81,7 +84,15 @@ require('db.php');
 										</div>
 									</li>
 								</ul>
+							</li> -->
+							<li class="dropdown <?php echo (basename($_SERVER['PHP_SELF']) == "view-blog.php" || basename($_SERVER['PHP_SELF']) == "view-event.php") ? "active" : ""; ?>"><a href="#" data-toggle="dropdown" class="dropdown-toggle">Blog / Event<b class="caret"></b></a>
+								<ul class="dropdown-menu" role="menu">
+
+									<li><a href="view-blog.php">Blogs</a></li>
+									<li><a href="view-event.php">News / Events</a></li>
+								</ul>
 							</li>
+
 							<li class="<?php echo (basename($_SERVER['PHP_SELF']) == "resources.php") ? "active" : ""; ?>">
 								<a href="resources.php">Resources</a>
 							</li>
@@ -146,9 +157,12 @@ require('db.php');
 				<li class="<?php echo (basename($_SERVER['PHP_SELF']) == "service.php") ? "active" : ""; ?>">
 					<a href="service.php">Services</a>
 				</li>
-				<li class="<?php echo (basename($_SERVER['PHP_SELF']) == "it-takes-village.php") ? "active" : ""; ?> dropdown w3_megamenu-fw"><a href="it-takes-village.php" data-toggle="dropdown" class="dropdown-toggle">It takes a village<b class="caret"></b></a>
+				<li class="<?php echo (basename($_SERVER['PHP_SELF']) == "meal-service.php") ? "active" : ""; ?>">
+					<a href="meal-service.php">It takes a village</a>
+				</li>
+				<!-- <li class="<?php echo (basename($_SERVER['PHP_SELF']) == "it-takes-village.php") ? "active" : ""; ?> dropdown w3_megamenu-fw"><a href="it-takes-village.php" data-toggle="dropdown" class="dropdown-toggle">It takes a village<b class="caret"></b></a>
 					<ul class="dropdown-menu fullwidth">
-						<li class="w3_megamenu-content withdesc">
+						<li class="w3_megamenu-content ">
 							<div class="row">
 								<div class="col-sm-4">
 									<h3 class="title">Meals</h3>
@@ -202,6 +216,13 @@ require('db.php');
 								</div>
 							</div>
 						</li>
+					</ul>
+				</li> -->
+				<li class="dropdown <?php echo (basename($_SERVER['PHP_SELF']) == "view-blog.php" || basename($_SERVER['PHP_SELF']) == "view-event.php") ? "active" : ""; ?>"><a href="#" data-toggle="dropdown" class="dropdown-toggle">Blog / Event<b class="caret"></b></a>
+					<ul class="dropdown-menu" role="menu">
+
+						<li><a href="view-blog.php">Blogs</a></li>
+						<li><a href="view-event.php">News / Events</a></li>
 					</ul>
 				</li>
 				<li class="<?php echo (basename($_SERVER['PHP_SELF']) == "resources.php") ? "active" : ""; ?>">

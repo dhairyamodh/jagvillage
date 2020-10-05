@@ -30,7 +30,7 @@ session_start();
 
 <body>
 	<!-- Top Header Section -->
-	<?php include('header1.php') ?>
+	<?php include('header.php') ?>
 	<!-- End Top Header Section -->
 	<section id="slider">
 		<div class="owl_slider top_slider_wrap">

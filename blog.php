@@ -81,15 +81,13 @@ require('db.php');
 					<div class="col-md-12 text-center" style="margin-bottom: 20px;">
 						<h2 class="h2" style="border-bottom: 2px solid #159397; padding-bottom: 20px;"><?php echo $title; ?></h2>
 					</div>
-					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+					<div class="col-lg-5 col-md-5 col-sm-5 col-xs-12" style="margin-bottom:20px;">
 
-						<img src="admin/upload/blog/<?php echo $img; ?>" alt="" style="width: 80%; border:3px solid #159397; border-radius: 10px;">
+						<img src="admin/upload/blog/<?php echo $img; ?>" alt="" style="object-fit:cover; width:100%; border:3px solid #159397; border-radius: 10px;">
 					</div>
-					<div class="col-lg-6">
+					<div class="col-lg-7">
 
 						<p style="text-align:justify; font-weight: 600;"><?php echo $desc; ?></p>
-
-
 
 					</div>
 

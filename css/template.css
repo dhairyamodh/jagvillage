@@ -2391,7 +2391,16 @@ a.btn-secondary:focus {
     padding: 3px;
   }
   .w3_megamenu-fw .dropdown-menu ul li a {
-    display: block;
-    padding: 0px;
+    padding: 3px 10px 3px 10px;
+  }
+  .w3_megamenu .w3_megamenu-content {
+    padding: 0px 0px 0px 15px;
+    background: #fafafa;
+  }
+  .w3_megamenu .title {
+    font-size: 13px;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-bottom: 1px solid #efefef;
   }
 }
