@@ -2,44 +2,46 @@
 session_start();
 require('../db.php');
 
-if(!empty($_SESSION['admin_email'])){
-    $msg = "";
-   if(isset($_POST['add-event'])){
-       $msg= 'sajdfsj';
-       $title = $_POST['title'];
-       $desc = $_POST['desc'];
-       $date = $_POST['date'];
-       
-    $sql = "insert into event(event_date,event_name,event_desc) values('$date','$title','$desc')";
-    
-    $run = mysqli_query($con,$sql);
+if (!empty($_SESSION['admin_email'])) {
+   $msg = "";
+   if (isset($_POST['add-event'])) {
+      $msg = 'sajdfsj';
+      $title = $_POST['title'];
+      $desc = mysqli_real_escape_string($con, $_POST['desc']);
+      $date = $_POST['date'];
+      $img = $_POST['filename'];
 
-    if($run){
-        $msg = '<div class="alert alert-success">Event Added Successfully</div>';
-    }
-    else{
-        $msg = '<div class="alert alert-danger">Event Not Added</div>';
-    }
+      $sql = "insert into event(event_date,event_name,event_img,event_desc) values('$date','$title','$img','$desc')";
+
+      $run = mysqli_query($con, $sql);
+
+      if ($run) {
+         $msg = '<div class="alert alert-success">Event Added Successfully</div>';
+      } else {
+         $msg = '<div class="alert alert-danger">Event Not Added</div>';
+      }
    }
 ?>
-<!DOCTYPE html>
-<html lang="zxx">
-<head>
+   <!DOCTYPE html>
+   <html lang="zxx">
+
+   <head>
       <!-- The above 6 meta tags *must* come first in the head; any other head content must come *after* these tags -->
       <meta charset="utf-8">
       <meta http-equiv="x-ua-compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta name="description" content="">
       <meta name="keyword" content="">
-      <meta name="author"  content=""/>
+      <meta name="author" content="" />
       <!-- Page Title -->
       <title>Add Event</title>
-      <!-- Main CSS -->	  
-      <link type="text/css" rel="stylesheet" href="assets/css/style.css"/>
-      <!-- Favicon -->	
+      <!-- Main CSS -->
+      <link type="text/css" rel="stylesheet" href="assets/css/style.css" />
+      <!-- Favicon -->
       <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
-      <link type="text/css" rel="stylesheet" href="assets/plugins/daterangepicker/daterangepicker.css"/>
+      <link type="text/css" rel="stylesheet" href="assets/plugins/daterangepicker/daterangepicker.css" />
    </head>
+
    <body>
       <!--================================-->
       <!-- Page Container Start -->
@@ -61,7 +63,7 @@ if(!empty($_SESSION['admin_email'])){
                <div class="search-form">
                   <form action="#" method="GET">
                      <div class="input-group">
-                        <input class="form-control search-input typeahead" name="search" placeholder="Type something..." type="text"/>
+                        <input class="form-control search-input typeahead" name="search" placeholder="Type something..." type="text" />
                         <span class="input-group-btn"><span id="close-search"><i data-feather="x" class="wd-16"></i></span></span>
                      </div>
                   </form>
@@ -77,7 +79,7 @@ if(!empty($_SESSION['admin_email'])){
                            <li class="list-inline-item"><a class="hidden-md hidden-lg" href="#" id="sidebar-toggle-button"><i data-feather="menu" class="wd-20"></i></a></li>
                            <!-- PC Toggle and Logo -->
                            <li class="list-inline-item"><a class=" hidden-xs hidden-sm" href="#" id="collapsed-sidebar-toggle-button"><i data-feather="menu" class="wd-20"></i></a><img src="../images/logo.png" alt="" style="margin-left:30px; width: 50%;"></li>
-                           
+
                         </ul>
                      </div>
                   </div>
@@ -90,33 +92,37 @@ if(!empty($_SESSION['admin_email'])){
                         <!--================================-->
                         <!-- Languages Dropdown Start -->
                         <!--================================-->
-                        
+
                         <!--/ Messages Dropdown End -->
                         <!--================================-->
                         <!-- Profile Dropdown Start -->
                         <!--================================-->
                         <li class="list-inline-item dropdown" style="border: 1px solid #808080; padding: 5px; border-radius: 20px;">
-                           <a  href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                           <?php 
-                                       if(!empty($_SESSION['admin_email'])){ echo ''.$_SESSION['admin_email']; }
-                                      
-                                       ?>
+                           <a href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              <?php
+                              if (!empty($_SESSION['admin_email'])) {
+                                 echo '' . $_SESSION['admin_email'];
+                              }
+
+                              ?>
                            </a>
                            <div class="dropdown-menu dropdown-menu-right dropdown-profile">
                               <div class="user-profile-area">
                                  <div class="user-profile-heading">
                                     <div class="profile-thumbnail">
-                                       
+
                                     </div>
                                     <div class="profile-text">
-                                       <h6><?php 
-                                       if(!empty($_SESSION['admin_email'])){ echo ''.$_SESSION['admin_email']; }
-                                      
-                                       ?></h6>
-                                       
+                                       <h6><?php
+                                             if (!empty($_SESSION['admin_email'])) {
+                                                echo '' . $_SESSION['admin_email'];
+                                             }
+
+                                             ?></h6>
+
                                     </div>
                                  </div>
-                                 
+
                                  <a href="logout.php" class="dropdown-item"><i data-feather="power" class="wd-16 mr-2"></i> Sign-out</a>
                               </div>
                            </div>
@@ -127,7 +133,7 @@ if(!empty($_SESSION['admin_email'])){
                   <!--/ Header Right End -->
                </nav>
             </div>
-            <!--/ Page Header End -->   
+            <!--/ Page Header End -->
             <!--================================-->
             <!-- Page Inner Start -->
             <!--================================-->
@@ -143,15 +149,15 @@ if(!empty($_SESSION['admin_email'])){
                            <div class="pd-t-5 pd-b-5">
                               <h1 class="pd-0 mg-0 tx-20 tx-dark">Add Event</h1>
                            </div>
-                           
+
                         </div>
                      </div>
                   </div>
                   <!--/ Breadcrumb End -->
                   <!--================================-->
                   <!-- Form Validation Start -->
-                  <!--================================-->				  
-                  
+                  <!--================================-->
+
                   <div class="row clearfix">
                      <!--================================-->
                      <!-- Required Input Validation Start -->
@@ -163,27 +169,39 @@ if(!empty($_SESSION['admin_email'])){
                                  <div>
                                     <h6 class="card-header-title tx-13 mb-0">Add Event Form</h6>
                                  </div>
-                                 
+
                               </div>
                            </div>
                            <div class="card-body">
-                           <?php echo $msg; ?>
-                              <form action="add-event.php" method="POST" data-parsley-validate >
-                                
-                                    <div class="row mg-b-15">
-                                    
+                              <?php echo $msg; ?>
+                              <form action="add-event.php" method="POST" data-parsley-validate>
+
+                                 <div class="row mg-b-15">
+
                                     <!-- col-4 -->
-                                    <div class="col-lg-8">
+                                    <div class="col-lg-6">
                                        <div class="form-group">
                                           <label class="form-control-label">Event Title<span class="tx-danger">*</span></label>
                                           <input type="text" name="title" class="form-control" placeholder="Enter event title" required>
                                        </div>
                                     </div>
                                     <!-- col-4 -->
-                                    <div class="col-lg-4">
+                                    <div class="col-lg-3">
                                        <div class="form-group mg-b-10-force">
                                           <label class="form-control-label">Event Date<span class="tx-danger">*</span></label>
-                                          <input type="text" autocomplete="off" class="form-control" name="date" placeholder="Choose date" required="" >
+                                          <input type="text" autocomplete="off" class="form-control" name="date" placeholder="Choose date" required="">
+                                       </div>
+                                    </div>
+                                    <div class="col-lg-3">
+                                       <div class="form-group mg-b-10-force">
+                                          <label class="form-control-label">Event Image<span class="tx-danger">*</span></label>
+                                          <div class="custom-file">
+                                             <input type="file" class="custom-file-input" id="file" name="file" required="">
+                                             <label class="custom-file-label">Choose file...</label>
+                                             <div class="invalid-feedback">Example invalid custom file feedback</div>
+                                             <div id="uploaded_image"></div>
+                                             <input type="hidden" name="filename">
+                                          </div>
                                        </div>
                                     </div>
                                     <!-- col-8 -->
@@ -195,19 +213,19 @@ if(!empty($_SESSION['admin_email'])){
                                     </div>
                                     <!-- col-4 -->
                                  </div>
-                                    <!-- d-flex -->
-                                    <button type="submit" name="add-event" class="btn btn-primary">Add Event</button>
-                                 
+                                 <!-- d-flex -->
+                                 <button type="submit" name="add-event" class="btn btn-primary">Add Event</button>
+
                               </form>
-                              
+
                            </div>
                         </div>
                      </div>
-                     <!--/ Required Input Validation End -->	
+                     <!--/ Required Input Validation End -->
                      <!--================================-->
                      <!-- Email Validates Start -->
                      <!--================================-->
-                     <!--/ Custom Style Error Messages End -->					
+                     <!--/ Custom Style Error Messages End -->
                   </div>
                   <!--/ Form Validation End -->
                </div>
@@ -215,23 +233,23 @@ if(!empty($_SESSION['admin_email'])){
             </div>
             <!--/ Page Inner End -->
             <!--================================-->
-            <!-- Page Footer Start -->	
+            <!-- Page Footer Start -->
             <!--================================-->
-            
-            <!--/ Page Footer End -->		
+
+            <!--/ Page Footer End -->
          </div>
          <!--/ Page Content End -->
       </div>
       <!--/ Page Container End -->
       <!--================================-->
       <!-- Scroll To Top Start-->
-      <!--================================-->	
+      <!--================================-->
       <a href="#" data-click="scroll-top" class="btn-scroll-top fade"><i class="fa fa-arrow-up"></i></a>
       <!--/ Scroll To Top End -->
       <!--================================-->
       <!-- Template Customizer Start-->
-      <!--================================-->		  
-      
+      <!--================================-->
+
       <!--/ Template Customizer End -->
       <!--================================-->
       <!-- Footer Script -->
@@ -253,34 +271,70 @@ if(!empty($_SESSION['admin_email'])){
       <script src="assets/js/avesta.js"></script>
       <script src="assets/js/avesta-customizer.js"></script>
       <script src="assets/plugins/moment/moment.min.js"></script>
-      <script src="assets/plugins/daterangepicker/daterangepicker.js"></script> 
+      <script src="assets/plugins/daterangepicker/daterangepicker.js"></script>
       <script>
-         $(function(){
-           'use strict';         
-           $('#selectForm').parsley();
-           $('#selectForm2').parsley();
+         $(function() {
+            'use strict';
+            $('#selectForm').parsley();
+            $('#selectForm2').parsley();
          });
       </script>
    </body>
-<script>
+   <script>
+      $(function() {
+         var isRtl = $('body').attr('dir') === 'rtl' || $('html').attr('dir') === 'rtl';
+         $('input[name="date"]').datepicker({
+            showOtherMonths: true,
+            selectOtherMonths: true,
+            dateFormat: 'yy-mm-dd',
+            minDate: 'today'
+         });
+         $('input[name="date"]').on('apply.daterangepicker', function(ev, picker) {
+            $(this).val(picker.startDate.format('DD/MM/YYYY'));
+         });
+      });
+   </script>
+   <script>
+      $(document).ready(function() {
+         $(document).on('change', '#file', function() {
+            var name = document.getElementById("file").files[0].name;
+            var form_data = new FormData();
+            var ext = name.split('.').pop().toLowerCase();
+            if (jQuery.inArray(ext, ['gif', 'png', 'jpg', 'jpeg']) == -1) {
+               alert("Invalid Image File");
+            }
+            var oFReader = new FileReader();
+            oFReader.readAsDataURL(document.getElementById("file").files[0]);
+            var f = document.getElementById("file").files[0];
+            var fsize = f.size || f.fileSize;
+            if (fsize > 2000000) {
+               alert("Image File Size is very big");
+            } else {
+               form_data.append("file", document.getElementById('file').files[0]);
+               form_data.append('upload_event_img', 1);
+               $('input[name="filename"]').val(document.getElementById("file").files[0].name);
+               $.ajax({
+                  url: "upload.php",
+                  method: "POST",
+                  data: form_data,
+                  contentType: false,
+                  cache: false,
+                  processData: false,
+                  beforeSend: function() {
+                     $('#uploaded_image').html("<label class='text-success'>Image Uploading...</label>");
+                  },
+                  success: function(data) {
+                     $('#uploaded_image').html(data);
+                  }
+               });
+            }
+         });
+      });
+   </script>
 
-$(function() {
-                    var isRtl = $('body').attr('dir') === 'rtl' || $('html').attr('dir') === 'rtl';
-                    $('input[name="date"]').datepicker({
-          showOtherMonths: true,
-          selectOtherMonths: true,
-          dateFormat: 'yy-mm-dd',
-          minDate: 'today'
-        });
-                  $('input[name="date"]').on('apply.daterangepicker', function(ev, picker) {
-                    $(this).val(picker.startDate.format('DD/MM/YYYY'));
-                });
- });
- </script>
-   
-</html>
+   </html>
 <?php
-}else{
-  header('Location: login.php');
+} else {
+   header('Location: login.php');
 }
 ?>

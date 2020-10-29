@@ -25,6 +25,8 @@ require('db.php');
 	<link href='css/jquery.bxslider.css' rel='stylesheet'>
 	<link href='css/owl.carousel.min.css' rel='stylesheet'>
 	<link href='css/template.css' rel='stylesheet'>
+	<link href='css/owl-carousel.css' rel='stylesheet'>
+	<link href='css/carousel.css' rel='stylesheet'>
 
 </head>
 
@@ -58,27 +60,130 @@ require('db.php');
 		<div class="container">
 			<div class="col-lg-12 col-md-12 col-sm-6 col-xs-12">
 				<div class="events-wrap">
-					<h3 class="black-text">Upcoming Events</h3>
+					<div class="section-title">
+						<h2 class="dark-bg">Upcoming Events
+						</h2>
+					</div>
 					<?php
-					$sql = "select * from event";
+					$today = date('Y-m-d');
+					$sql = "select * from event where event_date > '$today'";
 					$run = mysqli_query($con, $sql);
 					$i = 0;
-					while ($row = mysqli_fetch_array($run)) {
-						$i++;
+					if (mysqli_num_rows($run) > 0) {
+						echo '<div class="owl-carousel customers-testimonials">';
+						foreach ($run as $row) {
+							$i++;
 					?>
-						<div class="event-item">
-							<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 event-date"><?php echo date('j', strtotime($row['event_date']))  ?><br /><span class="month"><?php echo date('M', strtotime($row['event_date']))  ?></span></div>
-							<div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 event-info">
-								<div class="event-title"><?php echo $row['event_name']; ?></div>
-								<div class="event-text">
-									<p style="text-align:justify; font-weight: 600;"><?php echo $row['event_desc']; ?></p>
+
+
+							<!--TESTIMONIAL 1 -->
+							<div class="item">
+								<div class="shadow-effect">
+									<div class="img-container">
+										<img class="img-responsive" src="admin/upload/event/<?php echo $row['event_img']; ?>" alt="">
+										<div class="content">
+											<h1><i class="fa fa-clock-o"></i> <?php echo date('j M, Y', strtotime($row['event_date']))  ?></h1>
+										</div>
+									</div>
+									<div class="item-details">
+										<h5><?php echo $row['event_name']; ?></h5>
+										<p><?php echo $row['event_desc']; ?></p>
+										<a href="event.php?event_id=<?php echo $row['event_id']; ?>" class="btn btn-primary ">More Details</a>
+									</div>
+
 								</div>
-								<p><a href="event.php?event_id=<?php echo $row['event_id']; ?>" class="dark light-text">More Details</a></p>
 							</div>
-						</div>
-					<?php } ?>
+
+					<?php }
+						echo '</div>';
+					} else {
+						echo '<h3 class="text-danger text-center" style="padding-bottom:40px;">No Events Available</h3>';
+					} ?>
+					<div class="section-title">
+						<h2 class="dark-bg">Continues Events
+						</h2>
+					</div>
+
+					<?php
+					$today = date('Y-m-d');
+					$sql = "select * from event where event_date = '$today'";
+					$run = mysqli_query($con, $sql);
+					$i = 0;
+					if (mysqli_num_rows($run) > 0) {
+						echo '<div class="owl-carousel customers-testimonials">';
+						foreach ($run as $row) {
+							$i++;
+					?>
+
+
+							<!--TESTIMONIAL 1 -->
+							<div class="item">
+								<div class="shadow-effect">
+									<div class="img-container">
+										<img class="img-responsive" src="admin/upload/event/<?php echo $row['event_img']; ?>" alt="">
+										<div class="content">
+											<h1><i class="fa fa-clock-o"></i> <?php echo date('j M, Y', strtotime($row['event_date']))  ?></h1>
+										</div>
+									</div>
+									<div class="item-details">
+										<h5><?php echo $row['event_name']; ?></h5>
+										<p><?php echo $row['event_desc']; ?></p>
+										<a href="event.php?event_id=<?php echo $row['event_id']; ?>" class="btn btn-primary ">More Details</a>
+									</div>
+
+								</div>
+							</div>
+
+					<?php }
+						echo '</div>';
+					} else {
+						echo '<h3 class="text-danger text-center" style="padding-bottom:40px;">No Events Available</h3>';
+					}
+					?>
+
+					<div class="section-title">
+						<h2 class="dark-bg">Finished Events
+						</h2>
+					</div>
+					<?php
+					$today = date('Y-m-d');
+					$sql = "select * from event where event_date < '$today'";
+					$run = mysqli_query($con, $sql);
+					$i = 0;
+					if (mysqli_num_rows($run) > 0) {
+						echo '<div class="owl-carousel customers-testimonials">';
+						foreach ($run as $row) {
+							$i++;
+					?>
+
+
+							<!--TESTIMONIAL 1 -->
+							<div class="item">
+								<div class="shadow-effect">
+									<div class="img-container">
+										<img class="img-responsive" src="admin/upload/event/<?php echo $row['event_img']; ?>" alt="">
+										<div class="content">
+											<h1><i class="fa fa-clock-o"></i> <?php echo date('j M, Y', strtotime($row['event_date']))  ?></h1>
+										</div>
+									</div>
+									<div class="item-details">
+										<h5><a href="event.php?event_id=<?php echo $row['event_id']; ?>"><?php echo $row['event_name']; ?></a></h5>
+										<p><?php echo $row['event_desc']; ?></p>
+										<a href="event.php?event_id=<?php echo $row['event_id']; ?>" class="btn btn-primary ">More Details</a>
+									</div>
+
+								</div>
+							</div>
+
+					<?php }
+						echo '</div>';
+					} else {
+						echo '<h3 class="text-danger text-center" style="padding-bottom:40px;">No Events Available</h3>';
+					} ?>
+
 				</div>
 			</div>
+
 
 	</section>
 
@@ -123,7 +228,34 @@ require('db.php');
 	<script src="js/jquery.form-validator.min.js"></script>
 	<script src="js/scrollreveal.min.js"></script>
 	<script src="js/script.js"></script>
-
+	<script src="js/owl-carousel.js"></script>
+	<script>
+		jQuery(document).ready(function($) {
+			"use strict";
+			$('.customers-testimonials').owlCarousel({
+				loop: false,
+				items: 3,
+				margin: 30,
+				autoplay: false,
+				nav: true,
+				dots: false,
+				autoplayTimeout: 8500,
+				smartSpeed: 450,
+				navText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'],
+				responsive: {
+					0: {
+						items: 1
+					},
+					768: {
+						items: 3
+					},
+					1170: {
+						items: 3
+					}
+				}
+			});
+		});
+	</script>
 
 
 	<!-- END SCRIPTS -->

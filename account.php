@@ -17,15 +17,29 @@ if (!empty($_SESSION['email'])) {
 	if (isset($_POST['save'])) {
 		// removes backslashes
 		$fname = $_POST['fname'];
+		$mname = $_POST['mname'];
 		$lname = $_POST['lname'];
+		$dob = $_POST['day'] . '-' . $_POST['month'] . '-' . $_POST['year'];
 		$email = $_POST['email'];
 		$password = $_POST['password'];
+		$home_phone = $_POST['home_phone'];
+		$business_phone = $_POST['business_phone'];
+		$mobile_phone = $_POST['mobile_phone'];
+		$fax_number = $_POST['fax_number'];
+		$address_one = $_POST['address_one'];
+		$address_two = $_POST['address_two'];
+		$city = $_POST['city'];
+		$state = $_POST['state'];
+		$zip = $_POST['zip'];
+		$country = $_POST['country'];
+		$tagline = $_POST['tagline'];
+		$interest = $_POST['interest'];
 		if ($password != "") {
 			$rpass = $_POST['rpassword'];
 			if ($password == $rpass) {
 				//Checking is user existing in the database or not
 				$pass = md5($password);
-				$query = "update user set user_fname='$fname', user_lname='$lname', user_password='$pass' WHERE user_email='$email'";
+				$query = "update user set user_fname='$fname',user_mname='$mname', user_lname='$lname',user_dob='$dob', user_home_phone='$home_phone', user_business_phone='$business_phone',user_mobile_phone='$mobile_phone',user_fax_number='$fax_number',user_address_one='$address_one',user_address_two='$address_two',user_city='$city',user_state='$state',user_zip='$zip',user_country='$country',user_tagline='$tagline',user_interest='$interest', user_password='$pass' WHERE user_email='$email'";
 				$result = mysqli_query($con, $query);
 				if ($result) {
 					// Redirect user to index.php
@@ -37,7 +51,7 @@ if (!empty($_SESSION['email'])) {
 				$msg = '<div class="alert alert-danger">Password not match!</div>';
 			}
 		} elseif ($password == "") {
-			$query = "update user set user_fname='$fname', user_lname='$lname' WHERE user_email='$email'";
+			$query = "update user set user_fname='$fname',user_mname='$mname', user_lname='$lname',user_dob='$dob', user_home_phone='$home_phone', user_business_phone='$business_phone',user_mobile_phone='$mobile_phone',user_fax_number='$fax_number',user_address_one='$address_one',user_address_two='$address_two',user_city='$city',user_state='$state',user_zip='$zip',user_country='$country',user_tagline='$tagline',user_interest='$interest' WHERE user_email='$email'";
 			$result = mysqli_query($con, $query);
 			if ($result) {
 				// Redirect user to index.php
@@ -100,19 +114,146 @@ if (!empty($_SESSION['email'])) {
 				<div class="section-body">
 
 					<div class="row">
+						<style>
+							.file {
+								padding: 10px;
+								width: 40px;
+								height: 40px;
+								display: flex;
+								justify-content: center;
+								align-items: center;
+								border-radius: 50%;
+								background: #159397;
+								color: #fff;
+								position: absolute;
+								top: 15px;
+								right: 30px;
+								cursor: pointer;
+								transition: all 0.5s ease-in-out;
+							}
 
+							.file:hover {
+								background: #0c5759;
+							}
+
+							input[type="file"] {
+								display: none;
+							}
+
+							.toast {
+								color: #fff;
+								width: 100%;
+							}
+
+							.toast div {
+								padding: 10px;
+								width: 100%;
+							}
+						</style>
 						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sendmessage">
 							<!-- Start contact form -->
 							<div id="contactemailsendresponse" class="emailsendresponse"><?php echo $msg; ?></div>
 							<form class="cmxform" action="account.php" method="post">
 								<h5>General Information</h5>
-								<label for="fname">First Name</label>
-								<input id="fname" placeholder="Enter First Name" type="text" name="fname" required value="<?php echo $row_details['user_fname']; ?>">
-								<label for="fname">Last Name</label>
-								<input id="lname" placeholder="Enter Last Name" type="text" name="lname" required value="<?php echo $row_details['user_lname']; ?>">
-								<label for="fname">Email Address</label>
+								<div class="row">
+									<div class="col-md-4">
+										<label class="file"><i class="fa fa-pencil"></i>
+											<input type="file" size="60" id="avatar_file" user_id="<?php echo $row_details['user_id']; ?>" token="{{ csrf_token() }}">
+										</label>
+										<img id="avatar" src="<?php echo ($row_details['user_avatar'] != '') ? 'images/avatar/' . $row_details['user_avatar'] : 'images/profile.png'; ?>" style="width: 100%; height:350px; object-fit:cover; border:3px solid #159397;">
+										<div class="toast">
+										</div>
+									</div>
+									<div class="col-md-8">
+										<div class="row">
+											<div class="col-md-12">
+												<label for="fname">First Name</label>
+												<input id="fname" placeholder="Enter First Name" type="text" name="fname" required value="<?php echo $row_details['user_fname']; ?>">
+											</div>
+											<div class="col-md-12">
+												<label for="mname">Middle Name</label>
+												<input id="mname" placeholder="Enter Middle Name" type="text" name="mname" value="<?php echo $row_details['user_mname']; ?>">
+											</div>
+											<div class="col-md-12">
+												<label for="lname">Last Name</label>
+												<input id="lname" placeholder="Enter Last Name" type="text" name="lname" required value="<?php echo $row_details['user_lname']; ?>">
+											</div>
+										</div>
+										<label for="fname">Birth Date </label>
+										<div class="row">
+											<div class="col-md-4">
+												<select name="year" id="year" onchange="change_year(this)"></select>
+											</div>
+											<div class="col-md-4">
+												<select name="month" id="month" onchange="change_month(this)"></select>
+											</div>
+											<div class="col-md-4">
+												<select name="day" id="day"></select>
+											</div>
+										</div>
+									</div>
+								</div>
+								<hr>
+								<h5>Contact Information</h5>
+								<div class="row">
+									<div class="col-md-12">
+										<label for="email">Email Address</label>
+										<input id="email" placeholder="Enter Email Address" type="email" name="email" required value="<?php echo $row_details['user_email']; ?>" readonly>
+									</div>
+									<div class="col-md-3">
+										<label for="hphone">Home Phone</label>
+										<input id="hphone" placeholder="Enter Home Phone" type="text" name="home_phone" value="<?php echo $row_details['user_home_phone']; ?>">
+									</div>
+									<div class="col-md-3">
+										<label for="bphone">Business Phone</label>
+										<input id="bphone" placeholder="Enter Business Phone" type="text" name="business_phone" value="<?php echo $row_details['user_business_phone']; ?>">
+									</div>
+									<div class="col-md-3">
+										<label for="mphone">Mobile Phone</label>
+										<input id="mphone" placeholder="Enter Mobile Phone" type="text" name="mobile_phone" value="<?php echo $row_details['user_mobile_phone']; ?>">
+									</div>
+									<div class="col-md-3">
+										<label for="fnumber">Fax Number</label>
+										<input id="fnumber" placeholder="Enter Fax Number" type="text" name="fax_number" value="<?php echo $row_details['user_fax_number']; ?>">
+									</div>
+									<div class="col-md-12">
+										<label for="add1">Address 1</label>
+										<input id="add1" placeholder="Enter Address 1" type="text" name="address_one" value="<?php echo $row_details['user_address_one']; ?>">
+									</div>
+									<div class="col-md-12">
+										<label for="add2">Address 2</label>
+										<input id="add2" placeholder="Enter Address 2" type="text" name="address_two" value="<?php echo $row_details['user_address_two']; ?>">
+									</div>
+									<div class="col-md-3">
+										<label for="city">City</label>
+										<input id="city" placeholder="Enter City" type="text" name="city" value="<?php echo $row_details['user_home_phone']; ?>">
+									</div>
+									<div class="col-md-3">
+										<label for="state">State/Province</label>
+										<input id="state" placeholder="Enter State/Province" type="text" name="state" value="<?php echo $row_details['user_business_phone']; ?>">
+									</div>
+									<div class="col-md-3">
+										<label for="zip">ZIP/Postal Code</label>
+										<input id="zip" placeholder="Enter ZIP/Postal Code" type="text" name="zip" value="<?php echo $row_details['user_mobile_phone']; ?>">
+									</div>
+									<div class="col-md-3">
+										<label for="country">Country</label>
+										<input id="country" placeholder="Enter Country" type="text" name="country" value="<?php echo $row_details['user_fax_number']; ?>">
+									</div>
+								</div>
+								<hr>
+								<h5>Personal Information</h5>
+								<div class="row">
+									<div class="col-md-12">
+										<label for="tag">Tagline</label>
+										<input id="tag" placeholder="Enter Tagline" type="text" name="tagline" value="<?php echo $row_details['user_tagline']; ?>">
+									</div>
+									<div class="col-md-12">
+										<label for="interest">Interest/Hobbies</label>
+										<input id="interest" placeholder="Enter Interest/Hobbies" type="text" name="interest" value="<?php echo $row_details['user_interest']; ?>">
+									</div>
+								</div>
 
-								<input id="femail" placeholder="Enter Email Address" type="email" name="email" data-validation="email" value="<?php echo $row_details['user_email']; ?>" readonly>
 								<hr>
 								<label for="fname">Change Your Password</label>
 								<input type="password" name="password" placeholder="Enter Your New Password">
@@ -168,10 +309,143 @@ if (!empty($_SESSION['email'])) {
 		<script src="js/jquery.form-validator.min.js"></script>
 		<script src="js/scrollreveal.min.js"></script>
 		<script src="js/script.js"></script>
-
-		<script async defer src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;key=AIzaSyC2rmifeU7p_fNAEfqOPFEytxVFCt61Xmc&amp;callback=initMap">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.js" integrity="sha256-yE5LLp5HSQ/z+hJeCqkz9hdjNkk1jaiGG0tDCraumnA=" crossorigin="anonymous"></script>
+		<script>
+			$('#hphone').mask('99999-99999');
+			$('#bphone').mask('99999-99999');
+			$('#mphone').mask('99999-99999');
+			$('#fnumber').mask('999 999 9999');
+			$('input[name="zip-code"]').mask('S0S 0S0');
+			$('input[name="mobile-number"]').mask('(00) 0000 0000');
+			$('input[name="postal-code"]').focusout(function() {
+				$('input[name="postal-code"]').val(this.value.toUpperCase());
+			});
 		</script>
+		<script>
+			var Days = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]; // index => month [0-11]
+			$(document).ready(function() {
+				var option = '<option value="day" selected disabled>Select Day</option>';
+				var selectedDay = "day";
+				for (var i = 1; i <= Days[0]; i++) { //add option days
+					option += '<option value="' + i + '">' + i + '</option>';
+				}
+				$('#day').append(option);
+				$('#day').val(selectedDay);
 
+				var option = '<option value="month" selected disabled>Select Month</option>';
+				var selectedMon = "month";
+				for (var i = 1; i <= 12; i++) {
+					option += '<option value="' + i + '">' + i + '</option>';
+				}
+				$('#month').append(option);
+				$('#month').val(selectedMon);
+
+				var d = new Date();
+				var option = '<option value="year" selected disabled>Select Year</option>';
+				selectedYear = "year";
+				for (var i = 1930; i <= d.getFullYear(); i++) { // years start i
+					option += '<option value="' + i + '">' + i + '</option>';
+				}
+				$('#year').append(option);
+				$('#year').val(selectedYear);
+
+				$('body').on('change', "#avatar_file", function() {
+					var id = $(this).attr('user_id');
+					var error_images = '';
+					var name = document.getElementById("avatar_file").files[0].name;
+					var form_data = new FormData();
+					var ext = name.split('.').pop().toLowerCase();
+					if (jQuery.inArray(ext, ['jpg', 'png', 'jpeg', 'gif']) == -1) {
+						error_images += "Invalid Image File";
+					}
+					var oFReader = new FileReader();
+					oFReader.readAsDataURL(document.getElementById("avatar_file").files[0]);
+					var f = document.getElementById("avatar_file").files[0];
+					var fsize = f.size || f.fileSize;
+					if (fsize > 2000000) {
+						error_images += '<p>' + i + ' File Size is very big</p>';
+					} else {
+						form_data.append("file", document.getElementById('avatar_file').files[0]);
+					}
+					if (error_images == '') {
+						form_data.append('user_id', id);
+						form_data.append('upload_avatar', 1);
+						$.ajax({
+							url: "admin/upload.php",
+							method: "POST",
+							data: form_data,
+							contentType: false,
+							cache: false,
+							processData: false,
+							beforeSend: function() {
+								$('.lds-ring').css('display', 'block');
+								$('.toast').html('<div style="background-color:#deda07;">Uploading</div>');
+							},
+							success: function(data) {
+								$('.lds-ring').css('display', 'none');
+								$('.toast').html(data);
+								location.reload(true);
+							}
+						});
+					} else {
+						return false;
+					}
+				});
+
+
+			});
+
+			function isLeapYear(year) {
+				year = parseInt(year);
+				if (year % 4 != 0) {
+					return false;
+				} else if (year % 400 == 0) {
+					return true;
+				} else if (year % 100 == 0) {
+					return false;
+				} else {
+					return true;
+				}
+			}
+
+			function change_year(select) {
+				if (isLeapYear($(select).val())) {
+					Days[1] = 29;
+
+				} else {
+					Days[1] = 28;
+				}
+				if ($("#month").val() == 2) {
+					var day = $('#day');
+					var val = $(day).val();
+					$(day).empty();
+					var option = '<option value="day" selected disabled>Select Day</option>';
+					for (var i = 1; i <= Days[1]; i++) { //add option days
+						option += '<option value="' + i + '">' + i + '</option>';
+					}
+					$(day).append(option);
+					if (val > Days[month]) {
+						val = 1;
+					}
+					$(day).val(val);
+				}
+			}
+
+			function change_month(select) {
+				var day = $('#day');
+				var val = $(day).val();
+				$(day).empty();
+				var option = '<option value="day" selected disabled>Select Day</option>';
+				var month = parseInt($(select).val()) - 1;
+				for (var i = 1; i <= Days[month]; i++) { //add option days
+					option += '<option value="' + i + '">' + i + '</option>';
+				}
+				$(day).append(option);
+				if (val > Days[month]) {
+					val = 1;
+				}
+			}
+		</script>
 		<!-- END SCRIPTS -->
 	</body>
 

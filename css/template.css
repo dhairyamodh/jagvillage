@@ -625,11 +625,22 @@ section#slider:before {
   border: 1px solid #000000;
   color: #333333;
 }
+#contacts form select {
+  background-color: transparent;
+  border: 1px solid #000000;
+  color: #333333;
+}
 
 #contacts form textarea {
   background-color: transparent;
   border: 1px solid #000000;
   color: #333333;
+}
+
+#contacts form label.error {
+  font-size: 0.9em;
+  color: red;
+  margin-top: -20px;
 }
 
 .contact-details {
