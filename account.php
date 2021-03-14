@@ -39,11 +39,12 @@ if (!empty($_SESSION['email'])) {
 			if ($password == $rpass) {
 				//Checking is user existing in the database or not
 				$pass = md5($password);
-				$query = "update user set user_fname='$fname',user_mname='$mname', user_lname='$lname',user_dob='$dob', user_home_phone='$home_phone', user_business_phone='$business_phone',user_mobile_phone='$mobile_phone',user_fax_number='$fax_number',user_address_one='$address_one',user_address_two='$address_two',user_city='$city',user_state='$state',user_zip='$zip',user_country='$country',user_tagline='$tagline',user_interest='$interest', user_password='$pass' WHERE user_email='$email'";
+				$query = "update user set user_mname='$mname', user_dob='$dob', user_home_phone='$home_phone', user_business_phone='$business_phone',user_mobile_phone='$mobile_phone',user_fax_number='$fax_number',user_address_one='$address_one',user_address_two='$address_two',user_city='$city',user_state='$state',user_zip='$zip',user_country='$country',user_tagline='$tagline',user_interest='$interest', user_password='$pass' WHERE user_email='$email'";
 				$result = mysqli_query($con, $query);
 				if ($result) {
 					// Redirect user to index.php
-					$msg = '<div class="alert alert-success">Account Details Updated!!</div>';
+					$msg = 1;
+					header('Location: ' . $_SERVER['REQUEST_URI'] . '?msg=' . $msg);
 				} else {
 					$msg = '<div class="alert alert-danger">Email or password is incorrect</div>';
 				}
@@ -51,11 +52,12 @@ if (!empty($_SESSION['email'])) {
 				$msg = '<div class="alert alert-danger">Password not match!</div>';
 			}
 		} elseif ($password == "") {
-			$query = "update user set user_fname='$fname',user_mname='$mname', user_lname='$lname',user_dob='$dob', user_home_phone='$home_phone', user_business_phone='$business_phone',user_mobile_phone='$mobile_phone',user_fax_number='$fax_number',user_address_one='$address_one',user_address_two='$address_two',user_city='$city',user_state='$state',user_zip='$zip',user_country='$country',user_tagline='$tagline',user_interest='$interest' WHERE user_email='$email'";
+			$query = "update user set user_mname='$mname', user_dob='$dob', user_home_phone='$home_phone', user_business_phone='$business_phone',user_mobile_phone='$mobile_phone',user_fax_number='$fax_number',user_address_one='$address_one',user_address_two='$address_two',user_city='$city',user_state='$state',user_zip='$zip',user_country='$country',user_tagline='$tagline',user_interest='$interest' WHERE user_email='$email'";
 			$result = mysqli_query($con, $query);
 			if ($result) {
 				// Redirect user to index.php
-				$msg = '<div class="alert alert-success">Account Details Updated!!</div>';
+				$msg = 1;
+				header('Location: ' . $_SERVER['REQUEST_URI'] . '?msg=' . $msg);
 			} else {
 				$msg = '<div class="alert alert-danger">Email or password is incorrect</div>';
 			}
@@ -152,13 +154,17 @@ if (!empty($_SESSION['email'])) {
 						</style>
 						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sendmessage">
 							<!-- Start contact form -->
-							<div id="contactemailsendresponse" class="emailsendresponse"><?php echo $msg; ?></div>
+							<div id="contactemailsendresponse" class="emailsendresponse"><?php
+																							if (isset($_GET['msg'])) {
+																								echo '<div class="alert alert-success">Account Details Updated!!</div>';
+																							}
+																							echo $msg; ?></div>
 							<form class="cmxform" action="account.php" method="post">
 								<h5>General Information</h5>
 								<div class="row">
 									<div class="col-md-4">
 										<label class="file"><i class="fa fa-pencil"></i>
-											<input type="file" size="60" id="avatar_file" user_id="<?php echo $row_details['user_id']; ?>" token="{{ csrf_token() }}">
+											<input type="file" size="60" id="avatar_file" user_id="<?php echo $row_details['user_id']; ?>">
 										</label>
 										<img id="avatar" src="<?php echo ($row_details['user_avatar'] != '') ? 'images/avatar/' . $row_details['user_avatar'] : 'images/profile.png'; ?>" style="width: 100%; height:350px; object-fit:cover; border:3px solid #159397;">
 										<div class="toast">
@@ -168,7 +174,7 @@ if (!empty($_SESSION['email'])) {
 										<div class="row">
 											<div class="col-md-12">
 												<label for="fname">First Name</label>
-												<input id="fname" placeholder="Enter First Name" type="text" name="fname" required value="<?php echo $row_details['user_fname']; ?>">
+												<input id="fname" placeholder="Enter First Name" type="text" name="fname" readonly value="<?php echo $row_details['user_fname']; ?>">
 											</div>
 											<div class="col-md-12">
 												<label for="mname">Middle Name</label>
@@ -176,7 +182,7 @@ if (!empty($_SESSION['email'])) {
 											</div>
 											<div class="col-md-12">
 												<label for="lname">Last Name</label>
-												<input id="lname" placeholder="Enter Last Name" type="text" name="lname" required value="<?php echo $row_details['user_lname']; ?>">
+												<input id="lname" placeholder="Enter Last Name" type="text" name="lname" readonly value="<?php echo $row_details['user_lname']; ?>">
 											</div>
 										</div>
 										<label for="fname">Birth Date </label>
@@ -226,19 +232,19 @@ if (!empty($_SESSION['email'])) {
 									</div>
 									<div class="col-md-3">
 										<label for="city">City</label>
-										<input id="city" placeholder="Enter City" type="text" name="city" value="<?php echo $row_details['user_home_phone']; ?>">
+										<input id="city" placeholder="Enter City" type="text" name="city" value="<?php echo $row_details['user_city']; ?>">
 									</div>
 									<div class="col-md-3">
 										<label for="state">State/Province</label>
-										<input id="state" placeholder="Enter State/Province" type="text" name="state" value="<?php echo $row_details['user_business_phone']; ?>">
+										<input id="state" placeholder="Enter State/Province" type="text" name="state" value="<?php echo $row_details['user_state']; ?>">
 									</div>
 									<div class="col-md-3">
 										<label for="zip">ZIP/Postal Code</label>
-										<input id="zip" placeholder="Enter ZIP/Postal Code" type="text" name="zip" value="<?php echo $row_details['user_mobile_phone']; ?>">
+										<input id="zip" placeholder="Enter ZIP/Postal Code" type="text" name="zip" value="<?php echo $row_details['user_zip']; ?>">
 									</div>
 									<div class="col-md-3">
 										<label for="country">Country</label>
-										<input id="country" placeholder="Enter Country" type="text" name="country" value="<?php echo $row_details['user_fax_number']; ?>">
+										<input id="country" placeholder="Enter Country" type="text" name="country" value="<?php echo $row_details['user_country']; ?>">
 									</div>
 								</div>
 								<hr>
@@ -311,43 +317,39 @@ if (!empty($_SESSION['email'])) {
 		<script src="js/script.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.js" integrity="sha256-yE5LLp5HSQ/z+hJeCqkz9hdjNkk1jaiGG0tDCraumnA=" crossorigin="anonymous"></script>
 		<script>
-			$('#hphone').mask('99999-99999');
-			$('#bphone').mask('99999-99999');
-			$('#mphone').mask('99999-99999');
+			$('#hphone').mask('(999)999-9999');
+			$('#bphone').mask('(999)999-9999');
+			$('#mphone').mask('(999)999-9999');
 			$('#fnumber').mask('999 999 9999');
-			$('input[name="zip-code"]').mask('S0S 0S0');
-			$('input[name="mobile-number"]').mask('(00) 0000 0000');
-			$('input[name="postal-code"]').focusout(function() {
-				$('input[name="postal-code"]').val(this.value.toUpperCase());
-			});
+			$('input[name="zip"]').mask('S0S 0S0');
 		</script>
 		<script>
 			var Days = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]; // index => month [0-11]
 			$(document).ready(function() {
-				var option = '<option value="day" selected disabled>Select Day</option>';
+				var option = '<option value="day"  disabled>Select Day</option>';
 				var selectedDay = "day";
 				for (var i = 1; i <= Days[0]; i++) { //add option days
 					option += '<option value="' + i + '">' + i + '</option>';
 				}
 				$('#day').append(option);
-				$('#day').val(selectedDay);
+				$('#day').val('<?php echo date('j', strtotime($row_details['user_dob'])); ?>');
 
-				var option = '<option value="month" selected disabled>Select Month</option>';
+				var option = '<option value="month"  disabled>Select Month</option>';
 				var selectedMon = "month";
 				for (var i = 1; i <= 12; i++) {
 					option += '<option value="' + i + '">' + i + '</option>';
 				}
 				$('#month').append(option);
-				$('#month').val(selectedMon);
+				$('#month').val('<?php echo (int) date('m', strtotime($row_details['user_dob'])); ?>');
 
 				var d = new Date();
-				var option = '<option value="year" selected disabled>Select Year</option>';
+				var option = '<option value="year"  disabled>Select Year</option>';
 				selectedYear = "year";
 				for (var i = 1930; i <= d.getFullYear(); i++) { // years start i
 					option += '<option value="' + i + '">' + i + '</option>';
 				}
 				$('#year').append(option);
-				$('#year').val(selectedYear);
+				$('#year').val('<?php echo date('Y', strtotime($row_details['user_dob'])); ?>');
 
 				$('body').on('change', "#avatar_file", function() {
 					var id = $(this).attr('user_id');
@@ -419,7 +421,7 @@ if (!empty($_SESSION['email'])) {
 					var day = $('#day');
 					var val = $(day).val();
 					$(day).empty();
-					var option = '<option value="day" selected disabled>Select Day</option>';
+					var option = '<option value="day"  disabled>Select Day</option>';
 					for (var i = 1; i <= Days[1]; i++) { //add option days
 						option += '<option value="' + i + '">' + i + '</option>';
 					}
@@ -435,7 +437,7 @@ if (!empty($_SESSION['email'])) {
 				var day = $('#day');
 				var val = $(day).val();
 				$(day).empty();
-				var option = '<option value="day" selected disabled>Select Day</option>';
+				var option = '<option value="day"  disabled>Select Day</option>';
 				var month = parseInt($(select).val()) - 1;
 				for (var i = 1; i <= Days[month]; i++) { //add option days
 					option += '<option value="' + i + '">' + i + '</option>';
@@ -446,6 +448,7 @@ if (!empty($_SESSION['email'])) {
 				}
 			}
 		</script>
+
 		<!-- END SCRIPTS -->
 	</body>
 

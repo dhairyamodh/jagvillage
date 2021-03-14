@@ -43,7 +43,7 @@ VALUES ('$fname', '$lname', '$email', '" . md5($password) . "')";
                     $_SESSION['email'] = $email;
                     $query_user = "SELECT * FROM `user` WHERE user_email='$email'
 and user_password='" . md5($password) . "'";
-                    $result = mysqli_query($con, $query_user) or die(mysql_error());
+                    $result = mysqli_query($con, $query_user);
                     $row = mysqli_fetch_array($result);
                     $_SESSION['user_id'] = $row['user_id'];
                     echo '<script>window.open("index.php","_self");</script>';

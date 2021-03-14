@@ -81,7 +81,6 @@ if (isset($_POST['send'])) {
 	<!-- Top Header Section -->
 	<?php include('header.php'); ?>
 	<!-- End Top Header Section -->
-
 	<!-- Slider Section -->
 	<section id="slider">
 		<div class="owl_slider top_slider_wrap">

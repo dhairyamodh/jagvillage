@@ -31,6 +31,40 @@ require('db.php');
 			font-weight: 700;
 			font-size: 1.1em;
 		}
+
+		.btn-reply {
+			font-size: 0.95em;
+			padding: 0;
+			color: #159397;
+			margin: 0px 20px 0px 0px;
+		}
+
+		.reply,
+		.view-reply,
+		.hide-reply {
+			font-size: 0.95em;
+			padding: 0;
+			border: none;
+			background-color: #fff;
+			color: #159397;
+			padding-left: 5px;
+		}
+
+		.panel {
+			border: none;
+			box-shadow: none;
+		}
+
+		.reply-hr {
+			margin: 10px;
+			width: 100%;
+			height: 0.05em;
+			background-color: #159397;
+		}
+
+		.btns {
+			display: flex;
+		}
 	</style>
 </head>
 
@@ -90,34 +124,40 @@ require('db.php');
 						<p style="text-align:justify; font-weight: 600;"><?php echo $desc; ?></p>
 
 					</div>
+					<?php
+					if (!empty($_SESSION['email'])) {
 
-					<div class="card col-md-12" style="margin-top:20px;">
-						<div class="panel panel-default">
-							<div class="panel-body">
-								<p style="color: #159397; font-size:20px; font-weight:600">Leave a Comment</p>
-								<hr>
-								<form class="cmxform" method="post" id="comment_form">
-									<label for="fname">Name</label>
-									<input id="fname" placeholder="Enter Name" type="text" name="comment_name" id="comment_name" required>
-									<!-- <div class="form-group">
+					?>
+						<div class="card col-md-12" style="margin-top:20px;">
+							<div class="panel panel-default">
+								<div class="panel-body">
+									<p style="color: #159397; font-size:20px; font-weight:600">Leave a Comment</p>
+									<hr>
+									<form class="cmxform" method="post" id="comment_form">
+										<!-- <label for="fname">Name</label>
+										<input id="fname" placeholder="Enter Name" type="text" name="comment_name" id="comment_name" required> -->
+										<input type="hidden" name="comment_name" id="comment_name" value="<?php echo $user_id ?>">
+										<!-- <div class="form-group">
 									<input type="text" name="comment_name" id="comment_name" class="form-control" placeholder="Enter Name" />
 								</div> -->
-									<label for="fname">Comment</label>
-									<textarea name="comment_content" id="comment_content" placeholder="Enter Comment" rows="5"></textarea>
-									<!-- <div class="form-group">
+										<label for="fname">Comment</label>
+										<textarea name="comment_content" id="comment_content" placeholder="Enter Comment" rows="5"></textarea>
+										<!-- <div class="form-group">
 									<textarea name="comment_content" id="comment_content" class="form-control" placeholder="Enter Comment" rows="5"></textarea>
 								</div> -->
-									<input type="hidden" name="comment_id" id="comment_id" value="0" />
-									<input type="hidden" name="blog_id" id="blog_id" value="<?php echo $id ?>" />
-									<button class="btn btn-primary" name="submit" id="submit" type="submit">Submit</button><br>
-								</form>
+										<input type="hidden" name="comment_id" id="comment_id" value="0" />
+										<input type="hidden" name="blog_id" id="blog_id" value="<?php echo $id ?>" />
+										<button class="btn btn-primary" name="submit" id="submit" type="submit">Submit</button><br>
+									</form>
 
-								<span id="comment_message"></span>
-								<div id="display_comment"></div>
+									<span id="comment_message"></span>
+									<div id="display_comment"></div>
+
+								</div>
+
 							</div>
-
 						</div>
-					</div>
+					<?php } ?>
 				</div>
 			</div>
 
@@ -207,6 +247,7 @@ require('db.php');
 					url: "fetch_comment.php",
 					method: "POST",
 					data: {
+						view_comment: 1,
 						id: id
 					},
 					success: function(data) {
@@ -215,10 +256,46 @@ require('db.php');
 				})
 			}
 
+			function view_replies(comment_id) {
+				$.ajax({
+					url: "fetch_comment.php",
+					method: "POST",
+					data: {
+						view_reply: 1,
+						comment_id: comment_id
+					},
+					success: function(data) {
+						$('.view-replies' + comment_id).html(data);
+
+					}
+				})
+			}
+
 			$(document).on('click', '.reply', function() {
 				var comment_id = $(this).attr("id");
 				$('#comment_id').val(comment_id);
-				$('#comment_name').focus();
+				$('#comment_content').focus();
+			});
+
+			$(document).on('click', '.view-reply', function() {
+				var comment_id = $(this).attr("id");
+				var id = $("#blog_id").val();
+				$(this).text('Hide Replies');
+				$(this).removeClass('view-reply');
+				$(this).addClass('hide-reply');
+				$(this).prev().removeClass('fa-chevron-down')
+				$(this).prev().addClass('fa-chevron-up')
+
+				view_replies(comment_id)
+			});
+
+			$(document).on('click', '.hide-reply', function() {
+				$(this).parent().parent().parent().siblings('.replies').html('');
+				$(this).text('View Replies');
+				$(this).addClass('view-reply');
+				$(this).removeClass('hide-reply');
+				$(this).prev().removeClass('fa-chevron-up')
+				$(this).prev().addClass('fa-chevron-down')
 			});
 
 		});

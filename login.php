@@ -18,7 +18,7 @@ if (empty($_SESSION['email'])) {
 		//Checking is user existing in the database or not
 		$query = "SELECT * FROM `user` WHERE user_email='$email'
 and user_password='" . md5($password) . "'";
-		$result = mysqli_query($con, $query) or die(mysql_error());
+		$result = mysqli_query($con, $query);
 		$count = mysqli_num_rows($result);
 		$row = mysqli_fetch_array($result);
 		if ($count == 1) {
@@ -150,7 +150,24 @@ and user_password='" . md5($password) . "'";
 		<script src="js/jquery.form-validator.min.js"></script>
 		<script src="js/scrollreveal.min.js"></script>
 		<script src="js/script.js"></script>
-
+		<script>
+			$.ajax({
+				url: "http://192.168.0.102:8000/api/home/en",
+				method: "GET",
+				headers: {
+					'Access-Control-Allow-Origin': '*',
+					'Access-Control-Allow-Methods': 'POST, GET, OPTIONS, PUT, DELETE',
+					'Access-Control-Allow-Headers': 'Content-Type, X-Auth-Token,X-Requested-With, Origin, Authorization'
+				},
+				crossDomain: true,
+				xhrFields: {
+					withCredentials: true
+				},
+				success: function(data) {
+					console.log(data)
+				}
+			});
+		</script>
 
 
 		<!-- END SCRIPTS -->

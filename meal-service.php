@@ -52,7 +52,17 @@ session_start();
         </div>
     </section>
     <!-- End Slider Section -->
+    <section id="about">
+        <div class="container">
+            <div class="col-md-12">
 
+                <p style="font-weight:600; font-size: 15px;  text-align: justify;">The loss of a loved one affects every aspect of life. “It Takes A Village” is an online platform that organizes support for the everyday needs, both tangible and emotional, of those who are grieving. Please create an account for a person/family you wish to support and invite others to sign up for helpful tasks on specific days/times.
+                </p>
+
+
+
+            </div>
+    </section>
     <!-- About Section -->
     <section id="about">
         <div class="container">
@@ -62,7 +72,7 @@ session_start();
             </div>
             <div class="row">
                 <div class="col-lg-6">
-                    <p style="font-weight:600; font-size: 15px; text-align:justify;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                    <p style="font-weight:600; font-size: 15px; text-align:justify;">We all need to eat, yet often even making a meal can seem like a daunting task.  Providing a prepared meal can ease the burdens your grieving friend carries.  This allows them to tend to something else that requires their attention.
                     </p>
                     <!-- <p style="font-weight:600; font-size: 15px; text-align:justify;">J.A.G. Village offers </p>
                     <ul class="another-ul">
@@ -74,7 +84,15 @@ session_start();
 
 
                 </div>
-                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" style="margin-bottom:20px;">
+
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+
+
+                    <img src="./images/it-takes-village/1.png" style="border:1px solid #159397; border-radius: 25px; object-fit: cover;" />
+
+                </div>
+
+                <!-- <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" style="margin-bottom:20px;">
 
 
                     <div class="container">
@@ -120,7 +138,7 @@ session_start();
 
 
 
-                </div>
+                </div> -->
 
             </div>
 
@@ -138,11 +156,11 @@ session_start();
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 
 
-                        <img src="https://via.placeholder.com/800x500" style="border:1px solid #159397; border-radius: 25px; object-fit: cover;" />
+                        <img src="./images/it-takes-village/2.png" style="border:1px solid #159397; border-radius: 25px; object-fit: cover;" />
 
                     </div>
 
-                    <p style="font-weight:600; font-size: 15px;  text-align: justify;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                    <p style="font-weight:600; font-size: 15px;  text-align: justify;">Tending to the outside can nurture the inside. Helping a grieving friend with seasonal house maintenance, whether it is gardening, cutting the lawn, raking leaves or clearing snow is a great hands-on way to help a friend/loved one.</p>
 
 
 
@@ -159,14 +177,14 @@ session_start();
             </div>
             <div class="row">
                 <div class="col-lg-6" style="margin-bottom:20px;">
-                    <p style="font-weight:600; font-size: 15px;  text-align: justify;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                    <p style="font-weight:600; font-size: 15px;  text-align: justify;">Whether we are feeling up to it or not, children require love and attention.   If you can provide some warmth and attention to the children, (whether you take them for an outing, bring them to your own home, keep them company in their own home, get them to school or extracurricular activity) the family will appreciate your generosity.</p>
                 </div>
 
 
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 
 
-                    <img src="https://via.placeholder.com/800x400" style="border:1px solid #159397; border-radius: 25px; object-fit: cover;" />
+                    <img src="./images/it-takes-village/3.png" style="border:1px solid #159397; border-radius: 25px; object-fit: cover;" />
 
                 </div>
 
@@ -185,11 +203,11 @@ session_start();
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 
 
-                        <img src="https://via.placeholder.com/800x400" style="border:1px solid #159397; border-radius: 25px; object-fit: cover;" />
+                        <img src="./images/it-takes-village/4.png" style="border:1px solid #159397; border-radius: 25px; object-fit: cover;" />
 
                     </div>
                     <div class="col-lg-6" style="margin-bottom:20px;">
-                        <p style="font-weight:600; font-size: 15px;  text-align: justify;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                        <p style="font-weight:600; font-size: 15px;  text-align: justify;">The gifts of time and a listening ear are invaluable. Go out for a walk, for tea or coffee, or simply pick up the phone and make a call.  (Go out or stay in for a tea/coffee, someone you can call when you are sad, someone who will go for a walk with you)</p>
 
                     </div>
 
@@ -209,14 +227,14 @@ session_start();
             </div>
             <div class="row">
                 <div class="col-lg-6" style="margin-bottom:20px;">
-                    <p style="font-weight:600; font-size: 15px;  text-align: justify;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                    <p style="font-weight:600; font-size: 15px;  text-align: justify;">Sometimes it is hard facing the public, not knowing how you are feeling, what questions people may ask, and/or what triggers may be present. Are you able to run errands (pick up groceries, give rides to appointments) for your friend?  Sharing the weight of these burdens allows for the heart to begin healing.</p>
                 </div>
 
 
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 
 
-                    <img src="https://via.placeholder.com/800x400" style="border:1px solid #159397; border-radius: 25px; object-fit: cover;" />
+                    <img src="./images/it-takes-village/5.png" style="border:1px solid #159397; border-radius: 25px; object-fit: cover;" />
 
                 </div>
 
@@ -235,11 +253,11 @@ session_start();
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 
 
-                        <img src="https://via.placeholder.com/800x400" style="border:1px solid #159397; border-radius: 25px; object-fit: cover;" />
+                        <img src="./images/it-takes-village/6.png" style="border:1px solid #159397; border-radius: 25px; object-fit: cover;" />
 
                     </div>
                     <div class="col-lg-6" style="margin-bottom:20px;">
-                        <p style="font-weight:600; font-size: 15px;  text-align: justify;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                        <p style="font-weight:600; font-size: 15px;  text-align: justify;">So much to do, so little energy.   We have daily expectations, people, animals, and things that count on us.  Are you able to provide a service (walking dog, housekeeping, laundry) for a friend?  When you provide support in this area, you allow your grieving friend to focus on healing their heart.</p>
 
                     </div>
 

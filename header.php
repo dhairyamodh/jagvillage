@@ -99,6 +99,9 @@ require('db.php');
 							<li class="<?php echo (basename($_SERVER['PHP_SELF']) == "contact.php") ? "active" : ""; ?>">
 								<a href="contact.php">Contact Us</a>
 							</li>
+							<li class="<?php echo (basename($_SERVER['PHP_SELF']) == "contact.php") ? "active" : ""; ?>">
+								<a href="donation.php">Donate</a>
+							</li>
 							<?php
 							//check user aleready logged in or not 
 
@@ -110,6 +113,7 @@ require('db.php');
 								while ($row = mysqli_fetch_array($run)) {
 									$fname = $row['user_fname'];
 									$lname = $row['user_lname'];
+									$user_id = $row['user_id'];
 								}
 
 								echo '
@@ -117,7 +121,6 @@ require('db.php');
                                 <ul class="dropdown-menu" role="menu">
 
                                     <li><a href="user/index.php">My Dashboard</a></li>
-                                    <li><a href="account.php">My Account</a></li>
                                     <li><a href="logout.php">Logout</a></li>
                                 </ul>
                             </li>
@@ -231,6 +234,9 @@ require('db.php');
 				<li class="<?php echo (basename($_SERVER['PHP_SELF']) == "contact.php") ? "active" : ""; ?>">
 					<a href="contact.php">Contact Us</a>
 				</li>
+				<li class="<?php echo (basename($_SERVER['PHP_SELF']) == "contact.php") ? "active" : ""; ?>">
+					<a href="donation.php">Donate</a>
+				</li>
 				<?php
 				//check user aleready logged in or not 
 
@@ -249,7 +255,6 @@ require('db.php');
                                 <ul class="dropdown-menu" role="menu">
 
                                     <li><a href="user/index.php">My Dashboard</a></li>
-                                    <li><a href="account.php">My Account</a></li>
                                     <li><a href="logout.php">Logout</a></li>
                                 </ul>
                             </li>
