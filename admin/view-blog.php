@@ -35,6 +35,40 @@ if (!empty($_SESSION['admin_email'])) {
    </head>
 
    <body>
+
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+         <div class="modal-dialog" role="document">
+            <div class="modal-content">
+               <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Comments</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                     <span aria-hidden="true">&times;</span>
+                  </button>
+               </div>
+               <div class="modal-body">
+                  <table class="table table-hover">
+                     <thead>
+                        <tr>
+                           <th>Name</th>
+                           <th>Comment</th>
+                           <th>Action</th>
+                        </tr>
+                     </thead>
+                     <tbody id="display_comment">
+
+                        <form action="delete.php" method="post" id="delete-blog">
+                           <input type="hidden" name="delete_blog" value="">
+                        </form>
+
+                     </tbody>
+                  </table>
+               </div>
+               <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+               </div>
+            </div>
+         </div>
+      </div>
       <!--================================-->
       <!-- Page Container Start -->
       <!--================================-->
@@ -188,9 +222,10 @@ if (!empty($_SESSION['admin_email'])) {
                                              <td>
                                                 <div style="white-space: nowrap; width: 500px; overflow: hidden;text-overflow: ellipsis; "><?php echo $row['blog_desc']; ?></div>
                                              </td>
-                                             <td class="">
+                                             <td>
                                                 <a href="edit-blog.php?blog_id=<?php echo $row['blog_id']; ?>" title="" data-toggle="tooltip" data-original-title="Edit" class="mr-3 text-primary"><i data-feather="edit-3" class="wd-16"></i></a>
-                                                <a href="#" title="" data-toggle="tooltip" delete_id="<?php echo $row['blog_id']; ?>" data-original-title="Remove" class="delete text-danger"><i data-feather="trash-2" class="wd-16"></i></a>
+                                                <a href="#" title="" data-toggle="tooltip" delete_id="<?php echo $row['blog_id']; ?>" data-original-title="Remove" class="delete mr-3 text-danger"><i data-feather="trash-2" class="wd-16"></i></a>
+                                                <a href="#" title="" data-toggle="tooltip" blog_id="<?php echo $row['blog_id']; ?>" data-original-title="Remove" class="comment text-warning"><i data-feather="message-circle" class="wd-16"></i></a>
                                              </td>
                                           </tr>
                                        <?php }
@@ -198,7 +233,9 @@ if (!empty($_SESSION['admin_email'])) {
                                        <form action="delete.php" method="post" id="delete-blog">
                                           <input type="hidden" name="delete_blog" value="">
                                        </form>
-
+                                       <form action="delete.php" method="post" id="delete-comment">
+                                          <input type="hidden" name="delete_comment" value="">
+                                       </form>
                                     </tbody>
                                  </table>
                               </div>
@@ -267,6 +304,34 @@ if (!empty($_SESSION['admin_email'])) {
                   document.getElementById('delete-blog').submit();
                }
             })
+
+            $('body').on('click', '.comment', function() {
+               load_comment($(this).attr('blog_id'));
+            });
+
+            $('body').on('click', '.deletecomment', function() {
+               var id = $(this).attr('id');
+               $('input[name="delete_comment"]').val(id);
+               if (confirm('Are you sure want delete this blog?')) {
+                  document.getElementById('delete-comment').submit();
+               }
+            });
+
+
+            function load_comment(id) {
+               $.ajax({
+                  url: "fetch.php",
+                  method: "POST",
+                  data: {
+                     view_comment: 1,
+                     id: id
+                  },
+                  success: function(data) {
+                     $('#display_comment').html(data);
+                     $('#exampleModal').modal('show');
+                  }
+               })
+            }
          })
       </script>
       <!-- / Javascript -->

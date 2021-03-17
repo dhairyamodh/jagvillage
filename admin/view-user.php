@@ -1,30 +1,32 @@
 <?php
 session_start();
 require('../db.php');
-if(!empty($_SESSION['admin_email'])){
+if (!empty($_SESSION['admin_email'])) {
 ?>
-<!DOCTYPE html>
-<html lang="zxx">
-   
-<head>
+   <!DOCTYPE html>
+   <html lang="zxx">
+
+   <head>
       <!-- The above 6 meta tags *must* come first in the head; any other head content must come *after* these tags -->
       <meta charset="utf-8">
       <meta http-equiv="x-ua-compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta name="description" content="">
       <meta name="keyword" content="">
-      <meta name="author"  content=""/>
+      <meta name="author" content="" />
       <!-- Page Title -->
       <title>Admin dashboard | jagvillage</title>
       <!-- Datepicket CSS -->
-      <link type="text/css" rel="stylesheet" href="assets/plugins/daterangepicker/daterangepicker.css"/>
-      <!-- Chart CSS -->      
+      <link type="text/css" rel="stylesheet" href="assets/plugins/daterangepicker/daterangepicker.css" />
+      <!-- Chart CSS -->
       <link type="text/css" rel="stylesheet" href="assets/plugins/chartist/chartist.css">
-      <!-- Map CSS --> 
+      <!-- Map CSS -->
       <link type="text/css" rel="stylesheet" href="assets/plugins/jqvmap/jquery-jvectormap-2.0.2.css">
-      <!-- Main CSS -->	  
-      <link type="text/css" rel="stylesheet" href="assets/css/style.css"/>
-      <!-- Favicon -->	
+      <link type="text/css" rel="stylesheet" href="assets/plugins/dataTable/datatables.min.css">
+      <link type="text/css" rel="stylesheet" href="assets/plugins/dataTable/extensions/dataTables.jqueryui.min.css">
+      <!-- Main CSS -->
+      <link type="text/css" rel="stylesheet" href="assets/css/style.css" />
+      <!-- Favicon -->
       <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
       <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
       <!-- WARNING: Respond.js doesn"t work if you view the page via file:// -->
@@ -33,6 +35,7 @@ if(!empty($_SESSION['admin_email'])){
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
       <![endif]-->
    </head>
+
    <body>
       <!--================================-->
       <!-- Page Container Start -->
@@ -51,7 +54,7 @@ if(!empty($_SESSION['admin_email'])){
             <!-- Page Header Start -->
             <!--================================-->
             <div class="page-header">
-               
+
                <nav class="navbar navbar-default">
                   <!--================================-->
                   <!-- Brand and Logo Start -->
@@ -63,7 +66,7 @@ if(!empty($_SESSION['admin_email'])){
                            <li class="list-inline-item"><a class="hidden-md hidden-lg" href="#" id="sidebar-toggle-button"><i data-feather="menu" class="wd-20"></i></a></li>
                            <!-- PC Toggle and Logo -->
                            <li class="list-inline-item"><a class=" hidden-xs hidden-sm" href="#" id="collapsed-sidebar-toggle-button"><i data-feather="menu" class="wd-20"></i></a></li>
-                           
+
                         </ul>
                      </div>
                   </div>
@@ -76,33 +79,37 @@ if(!empty($_SESSION['admin_email'])){
                         <!--================================-->
                         <!-- Languages Dropdown Start -->
                         <!--================================-->
-                        
+
                         <!--/ Messages Dropdown End -->
                         <!--================================-->
                         <!-- Profile Dropdown Start -->
                         <!--================================-->
                         <li class="list-inline-item dropdown" style="border: 1px solid #808080; padding: 5px; border-radius: 20px;">
-                           <a  href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                           <?php 
-                                       if(!empty($_SESSION['admin_email'])){ echo ''.$_SESSION['admin_email']; }
-                                      
-                                       ?>
+                           <a href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              <?php
+                              if (!empty($_SESSION['admin_email'])) {
+                                 echo '' . $_SESSION['admin_email'];
+                              }
+
+                              ?>
                            </a>
                            <div class="dropdown-menu dropdown-menu-right dropdown-profile">
                               <div class="user-profile-area">
                                  <div class="user-profile-heading">
                                     <div class="profile-thumbnail">
-                                       
+
                                     </div>
                                     <div class="profile-text">
-                                       <h6><?php 
-                                       if(!empty($_SESSION['admin_email'])){ echo ''.$_SESSION['admin_email']; }
-                                      
-                                       ?></h6>
-                                       
+                                       <h6><?php
+                                             if (!empty($_SESSION['admin_email'])) {
+                                                echo '' . $_SESSION['admin_email'];
+                                             }
+
+                                             ?></h6>
+
                                     </div>
                                  </div>
-                                 
+
                                  <a href="logout.php" class="dropdown-item"><i data-feather="power" class="wd-16 mr-2"></i> Sign-out</a>
                               </div>
                            </div>
@@ -113,7 +120,7 @@ if(!empty($_SESSION['admin_email'])){
                   <!--/ Header Right End -->
                </nav>
             </div>
-            <!--/ Page Header End -->   
+            <!--/ Page Header End -->
             <!--================================-->
             <!-- Page Inner Start -->
             <!--================================-->
@@ -129,21 +136,21 @@ if(!empty($_SESSION['admin_email'])){
                            <div class="pd-t-5 pd-b-5">
                               <h1 class="pd-0 mg-0 tx-20 tx-dark">View Users</h1>
                            </div>
-                           
+
                         </div>
                      </div>
                   </div>
                   <!--/ Breadcrumb End -->
                   <!--================================-->
                   <!-- Static Tables Start -->
-                  <!--================================-->				  
-                  
+                  <!--================================-->
+
                   <div class="row clearfix">
                      <!--================================-->
                      <!-- Basic Table Start -->
                      <!--================================-->
-                     
-                     
+
+
                      <div class="col-md-12 col-lg-12">
                         <div class="card mg-b-30">
                            <div class="card-header">
@@ -151,64 +158,64 @@ if(!empty($_SESSION['admin_email'])){
                                  <div>
                                     <h6 class="card-header-title tx-13 mb-0">View Users</h6>
                                  </div>
-                                 
+
                               </div>
                            </div>
                            <div class="card-body pd-0">
-						   <div class="table-responsive">
-                              <table class="table table-hover">
-                                 <thead>
-                                    <tr>
-                                       <th>#</th>
-                                       <th>First Name</th>
-                                       <th>Last Name</th>
-                                       <th>Email Address</th>
-                                    </tr>
-                                 </thead>
-                                 <tbody>
-                                     <?php
-                                        $sql = "select * from user";
-                                        $run = mysqli_query($con,$sql);
-                                        $i=0;
-                                        while($row=mysqli_fetch_array($run)){ 
-                                            $i++;
-                                            ?>
-                                            <tr>
-                                       <td><?php echo $i; ?></td>
-                                       <td><?php echo $row['user_fname']; ?></td>
-                                       <td><?php echo $row['user_lname']; ?></td>
-                                       <td><?php echo $row['user_email']; ?></td>
-                                    </tr>
+                              <div class="table-responsive">
+                                 <table id="basicDataTable" class="table responsive nowrap">
+                                    <thead>
+                                       <tr>
+                                          <th>#</th>
+                                          <th>First Name</th>
+                                          <th>Last Name</th>
+                                          <th>Email Address</th>
+                                       </tr>
+                                    </thead>
+                                    <tbody>
+                                       <?php
+                                       $sql = "select * from user";
+                                       $run = mysqli_query($con, $sql);
+                                       $i = 0;
+                                       while ($row = mysqli_fetch_array($run)) {
+                                          $i++;
+                                       ?>
+                                          <tr>
+                                             <td><?php echo $i; ?></td>
+                                             <td><?php echo $row['user_fname']; ?></td>
+                                             <td><?php echo $row['user_lname']; ?></td>
+                                             <td><?php echo $row['user_email']; ?></td>
+                                          </tr>
                                        <?php }
-                                     ?>
-                                    
-                                    
-                                 </tbody>
-                              </table>
-                           </div>
+                                       ?>
+
+
+                                    </tbody>
+                                 </table>
+                              </div>
                            </div>
                         </div>
                      </div>
-                     <!--/ Color Table End -->		
+                     <!--/ Color Table End -->
                   </div>
                   <!--/ Static Tables End -->
                </div>
                <!--/ Wrapper End -->
             </div>
-            <!--/ Page Footer End -->		
+            <!--/ Page Footer End -->
          </div>
          <!--/ Page Content End -->
       </div>
       <!--/ Page Container End -->
       <!--================================-->
       <!-- Scroll To Top Start-->
-      <!--================================-->	
+      <!--================================-->
       <a href="#" data-click="scroll-top" class="btn-scroll-top fade"><i class="fa fa-arrow-up"></i></a>
       <!--/ Scroll To Top End -->
       <!--================================-->
       <!-- Template Customizer Start-->
-      <!--================================-->		  
-      
+      <!--================================-->
+
       <!--/ Template Customizer End -->
       <!--================================-->
       <!-- Footer Script -->
@@ -225,31 +232,33 @@ if(!empty($_SESSION['admin_email'])){
       <script src="assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
       <script src="assets/plugins/highlight/highlight.min.js"></script>
       <!-- Dashboard Script -->
-      <script src="assets/plugins/daterangepicker/daterangepicker.js"></script>
-      <script src="assets/plugins/jqvmap/jquery-jvectormap-2.0.2.min.js"></script>	
-      <script src="assets/plugins/jqvmap/gdp-data.js"></script>	
-      <script src="assets/plugins/jqvmap/maps/jquery-jvectormap-world-mill-en.js"></script>	
-      <script src="assets/plugins/chartist/chartist.js"></script>
-      <script src="assets/plugins/apex-chart/apexcharts.min.js"></script>
-      <script src="assets/plugins/apex-chart/irregular-data-series.js"></script>
-      <script src="assets/plugins/flot/jquery.flot.js"></script>
-      <script src="assets/plugins/flot/jquery.flot.pie.js"></script>
-      <script src="assets/plugins/flot/jquery.flot.resize.js"></script>
-      <script src="assets/plugins/flot/sampledata.js"></script>  
+      <script src="assets/plugins/flot/sampledata.js"></script>
       <script src="assets/js/dashboard/sales-dashboard-init.js"></script>
       <!-- Required Script -->
+      <!-- dataTables Script -->
+      <script src="assets/plugins/dataTable/datatables.min.js"></script>
+      <script src="assets/plugins/dataTable/responsive/dataTables.responsive.js"></script>
+      <script src="assets/plugins/dataTable/extensions/dataTables.jqueryui.min.js"></script>
       <script src="assets/js/app.js"></script>
       <script src="assets/js/avesta.js"></script>
       <script src="assets/js/avesta-customizer.js"></script>
       <!-- Javascript -->
-     
+      <script>
+         $('#basicDataTable').DataTable({
+            responsive: true,
+            language: {
+               searchPlaceholder: 'Search...',
+               sSearch: ''
+            }
+         });
+      </script>
       <!-- / Javascript -->
    </body>
 
-</html>
+   </html>
 
 <?php
-}else{
-  header('Location: login.php');
+} else {
+   header('Location: login.php');
 }
 ?>

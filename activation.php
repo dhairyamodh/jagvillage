@@ -106,7 +106,7 @@ if (!empty($_SESSION['email'])) {
 					</h2>
 				</div>
 				<div class="row">
-					<div class="card col-md-12" style="border: 1px solid #1c1c1c; padding: 20px; border-radius: 10px; margin-">
+					<div class="card col-md-12" style="border: 1px solid #1c1c1c; padding: 20px; border-radius: 10px;">
 
 						<div class="alert alert-success">Your Jagvillage Service is completed. Time to share!</div>
 
@@ -235,9 +235,6 @@ if (!empty($_SESSION['email'])) {
 										$("#cc").prop("checked") == false;
 									}, 2000);
 								}
-
-
-
 							},
 						});
 					}

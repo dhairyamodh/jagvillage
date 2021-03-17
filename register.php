@@ -16,6 +16,7 @@ if (empty($_SESSION['email'])) {
         //escapes special characters in a string
         $fname = mysqli_real_escape_string($con, $fname);
         $lname = mysqli_real_escape_string($con, $lname);
+        $mobile = $_POST('mobile');
         $email = stripslashes($_POST['email']);
         $email = mysqli_real_escape_string($con, $email);
         $password = stripslashes($_POST['password']);
@@ -34,8 +35,8 @@ if (empty($_SESSION['email'])) {
                 $msg = '<label class="h4" style="color:#f54242;">Email address already exist !! </lable>';
             } else {
                 //insert user registation values in database
-                $query = "INSERT into `user` (user_fname, user_lname, user_email, user_password)
-VALUES ('$fname', '$lname', '$email', '" . md5($password) . "')";
+                $query = "INSERT into `user` (user_fname, user_lname, user_email,user_mobile_phone, user_password)
+VALUES ('$fname', '$lname', '$email','$mobile', '" . md5($password) . "')";
 
                 $result = mysqli_query($con, $query);
                 if ($result) {
@@ -132,6 +133,7 @@ and user_password='" . md5($password) . "'";
                                 <input type="text" name="fname" placeholder="Enter First Name">
                                 <input type="text" name="lname" placeholder="Enter Last Name">
                                 <input id="femail" placeholder="Enter Email Address" type="email" name="email" data-validation="email">
+                                <input type="text" name="mobile" placeholder="Enter Mobile Number" data-validation="phone">
                                 <input type="password" name="password" placeholder="Enter Password" id="password">
                                 <div id="popover-password">
                                     <p>Password Strength: <span id="result"> </span></p>
@@ -139,7 +141,7 @@ and user_password='" . md5($password) . "'";
                                         <div id="password-strength" class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:0%">
                                         </div>
                                     </div>
-                                    <ul class="list-unstyled" style="margin-bottom:">
+                                    <ul class="list-unstyled">
                                         <li class=""><span class="low-upper-case"><i class="fa fa-close" aria-hidden="true"></i></span>&nbsp; 1 lowercase &amp; 1 uppercase</li>
                                         <li class=""><span class="one-number"><i class="fa fa-close" aria-hidden="true"></i></span> &nbsp;1 number (0-9)</li>
                                         <li class=""><span class="one-special-char"><i class="fa fa-close" aria-hidden="true"></i></span> &nbsp;1 Special Character (!@#$%^&*).</li>
@@ -194,7 +196,7 @@ and user_password='" . md5($password) . "'";
         <script src="js/jquery.form-validator.min.js"></script>
         <script src="js/scrollreveal.min.js"></script>
         <script src="js/script.js"></script>
-
+        <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/jquery.inputmask.bundle.js"></script>
 
 
         <!-- END SCRIPTS -->
@@ -327,6 +329,9 @@ and user_password='" . md5($password) . "'";
                 }
             }
         });
+        $('input[name="mobile"]').inputmask({
+            "mask": "(999) 9999999999"
+        })
     </script>
 
     </html>
