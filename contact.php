@@ -100,7 +100,7 @@ if (isset($_POST['send'])) {
 				<h2 class="dark-bg">Our Contacts</h2>
 			</div>
 			<div class="section-body">
-				<div class="col-lg-3 col-md-3 col-sm-5 col-xs-10 centered contact-details">
+				<!-- <div class="col-lg-3 col-md-3 col-sm-5 col-xs-10 centered contact-details">
 					<div class="social-icons">
 						<a href="https://www.facebook.com/jagvillage/" target="_blank"><i class="fa fa-facebook-square fa-3x" aria-hidden="true"></i></a>
 						<a href="https://www.instagram.com/j.a.g.village/" target="_blank"><i class="fa fa-instagram fa-3x" aria-hidden="true"></i></a>
@@ -116,7 +116,7 @@ if (isset($_POST['send'])) {
 						<hr>
 						<span class="details">Email: info@jagvillage.com</span>
 					</div>
-				</div>
+				</div> -->
 
 				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sendmessage">
 					<h3 class="black-text">Send us a message</h3>

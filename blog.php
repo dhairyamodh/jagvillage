@@ -133,6 +133,7 @@ require('db.php');
 								<div class="panel-body">
 									<p style="color: #159397; font-size:20px; font-weight:600">Leave a Comment</p>
 									<hr>
+
 									<form class="cmxform" method="post" id="comment_form">
 										<!-- <label for="fname">Name</label>
 										<input id="fname" placeholder="Enter Name" type="text" name="comment_name" id="comment_name" required> -->
@@ -274,7 +275,37 @@ require('db.php');
 			$(document).on('click', '.reply', function() {
 				var comment_id = $(this).attr("id");
 				$('#comment_id').val(comment_id);
-				$('#comment_content').focus();
+				$(this).parent().parent().parent().append('<div class="input-group" style="margin-top:10px"><input type="text" name="reply" class="form-control" placeholder="Type a comment"><span class="input-group-btn"><button class="btn btn-primary" type="button" id="send_reply" style="padding:7px 12px; margin:0;">Send</button></span></div>')
+				$(this).parent().parent().parent().find($('input[name="reply"]')).focus();
+			});
+
+			$(document).on('click', '.reply', function() {
+				var comment_id = $(this).attr("id");
+				$('#comment_id').val(comment_id);
+			});
+
+			$('body').on('click', '#send_reply', function(event) {
+				var comment_id = $('#comment_id').val()
+				$.ajax({
+					url: "add_comment.php",
+					method: "POST",
+					data: {
+						comment_id: $('#comment_id').val(),
+						comment_content: $(this).parent().parent().find($('input[name="reply"]')).val(),
+						comment_name: $('#comment_name').val(),
+						blog_id: $('#blog_id').val(),
+					},
+					dataType: "JSON",
+					success: function(data) {
+						if (data.error != '') {
+							$('#comment_form')[0].reset();
+							$('#comment_message').html(data.error);
+							load_comment();
+							view_replies(comment_id)
+							$('#comment_id').val('0');
+						}
+					}
+				})
 			});
 
 			$(document).on('click', '.view-reply', function() {

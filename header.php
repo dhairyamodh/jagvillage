@@ -3,11 +3,11 @@
 require('db.php');
 ?>
 <section id="header">
-	<div class="container" style="display: flex;align-items:center; justify-content:space-between">
-		<div id="logo" class="col-lg-1 col-md-1 col-sm-1 col-xs-6">
+	<div class="container-fluid" style="display: flex;align-items:center; justify-content:space-between">
+		<div id="logo" class="col-lg-2 col-md-2 col-sm-2 col-xs-6" style="display: flex;justify-content:center;align-items:center">
 			<a href="index.php"><img src="images/logo.png" alt="Logo" /></a>
 		</div>
-		<div class="col-lg-11 col-md-11 col-sm-11 col-xs-6 top-navigation">
+		<div class="col-lg-10 col-md-10 col-sm-10 col-xs-6 top-navigation">
 			<div class="navbar-header">
 				<button style="margin-right:0;" type="button" data-toggle="collapse" data-target="#defaultmenu" class="navbar-toggle"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a href="#" class="navbar-brand"></a>
 			</div><!-- end navbar-header -->
@@ -99,7 +99,7 @@ require('db.php');
 							<li class="<?php echo (basename($_SERVER['PHP_SELF']) == "contact.php") ? "active" : ""; ?>">
 								<a href="contact.php">Contact Us</a>
 							</li>
-							<li class="<?php echo (basename($_SERVER['PHP_SELF']) == "contact.php") ? "active" : ""; ?>">
+							<li class="<?php echo (basename($_SERVER['PHP_SELF']) == "donation.php") ? "active" : ""; ?>">
 								<a href="donation.php">Donate</a>
 							</li>
 							<?php
@@ -234,7 +234,7 @@ require('db.php');
 				<li class="<?php echo (basename($_SERVER['PHP_SELF']) == "contact.php") ? "active" : ""; ?>">
 					<a href="contact.php">Contact Us</a>
 				</li>
-				<li class="<?php echo (basename($_SERVER['PHP_SELF']) == "contact.php") ? "active" : ""; ?>">
+				<li class="<?php echo (basename($_SERVER['PHP_SELF']) == "donation.php") ? "active" : ""; ?>">
 					<a href="donation.php">Donate</a>
 				</li>
 				<?php

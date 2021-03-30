@@ -329,8 +329,8 @@ and user_password='" . md5($password) . "'";
                 }
             }
         });
-        $('input[name="mobile"]').inputmask({
-            "mask": "(999) 9999999999"
+        $('input[name="mobile"]').inputmask('Regex', {
+            regex: "^[0-9]{1,15}(\\.\\d{1,2})?$"
         })
     </script>
 
